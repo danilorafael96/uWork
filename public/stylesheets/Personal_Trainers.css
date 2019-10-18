@@ -1,0 +1,65 @@
+body header{
+	background-color:lightblue;
+	border-radius: 25px;
+	font-family:"Georgia",serif;
+	text-align:left;
+}
+
+body{
+	background-image:url("blue-css-background-gradient-9.jpg");
+	background-repeat:repeat-x;
+}
+
+body main{
+	padding-bottom:95px;
+}
+
+ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background-color: grey;
+}
+
+li{
+	float:left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.flex-container{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	padding:10px;
+}
+
+.flex-container > div{
+	background-color:green;
+	padding:50px;
+	margin:58px;
+	text-align:center;
+}
+
+footer{
+	background-color:grey;
+	padding-bottom:15px;
+	font-family:"Georgia",serif;
+	text-align:left;
+}
+
+#branco{
+	color:white;
+}
+
+#cinza{
+    color:grey;
+}
+

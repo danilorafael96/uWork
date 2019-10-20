@@ -6,7 +6,7 @@ body header{
 }
 
 body{
-	background-image:url("blue-css-background-gradient-9.jpg");
+	background-image:url("../images/blue-css-background-gradient-9.jpg");
 	background-repeat:repeat-x;
 }
 
@@ -55,11 +55,12 @@ footer{
 	text-align:left;
 }
 
-#branco{
+li b{
 	color:white;
+	padding:80px;
+	margin:80px;
 }
 
-#cinza{
-    color:grey;
-}
+
+
 

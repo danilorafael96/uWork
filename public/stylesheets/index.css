@@ -11,7 +11,7 @@ body{
 	background-repeat:repeat-x;
 }
 
-ul{
+nav ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -19,11 +19,11 @@ ul{
 	background-color: grey;
 }
 
-li{
+nav li{
 	float:left;
 }
 
-li a {
+nav li a {
   display: block;
   color: white;
   text-align: center;
@@ -32,15 +32,10 @@ li a {
 }
 
 footer{
+	margin-top:480px;
 	background-color:grey;
-	padding-bottom:15px;
-	margin-top:372px;
-	font-family:"Georgia",serif;
-	text-align:left;
 }
 
-li b{
-	color:white;
-	padding:80px;
-	margin:80px;
+table{
+	margin-left:550px;
 }

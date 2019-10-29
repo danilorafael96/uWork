@@ -11,7 +11,7 @@ body{
 	background-repeat:repeat-x;
 }
 
-ul{
+nav ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -19,25 +19,11 @@ ul{
 	background-color: grey;
 }
 
-li{
+nav li{
 	float:left;
 }
 
-.flex-container{
-	display:flex;
-	flex-direction:row;
-	flex-wrap:wrap;
-	padding:10px;
-}
-
-.flex-container > div{
-	background-color:green;
-	padding:50px;
-	margin:58px;
-	text-align:center;
-}
-
-li a {
+nav li a {
   display: block;
   color: white;
   text-align: center;
@@ -45,16 +31,38 @@ li a {
   text-decoration: none;
 }
 
-footer{
-	background-color:grey;
-	padding-bottom:15px;
-	margin-top:60px;
-	font-family:"Georgia",serif;
-	text-align:left;
+.flex-container{
+	list-style-type:none;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	padding:30px;
 }
 
-li b{
-	color:white;
-	padding:80px;
-	margin:80px;
+.flex-container li{
+	margin:20px 120px 10px;
+}
+
+.flex-container li a{
+	display: block;
+	padding: 50px;
+}
+
+footer{
+	margin-top:235px;
+	background-color:grey;
+}
+
+table{
+	margin-left:550px;
+}
+
+.homem{
+	background:url("../images/homem.jpeg");
+	background-size:100px 100px;
+}
+
+.mulher{
+	background:url("../images/mulher.jpeg");
+	background-size:100px 100px;
 }

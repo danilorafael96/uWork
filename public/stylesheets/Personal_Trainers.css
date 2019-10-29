@@ -14,7 +14,7 @@ body main{
 	padding-bottom:95px;
 }
 
-ul{
+nav ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -22,11 +22,11 @@ ul{
 	background-color: grey;
 }
 
-li{
+nav li{
 	float:left;
 }
 
-li a {
+nav li a {
   display: block;
   color: white;
   text-align: center;
@@ -35,32 +35,39 @@ li a {
 }
 
 .flex-container{
+	list-style-type:none;
 	display:flex;
 	flex-direction:row;
 	flex-wrap:wrap;
-	padding:10px;
+	padding:30px;
 }
 
-.flex-container > div{
-	background-color:green;
-	padding:50px;
-	margin:58px;
-	text-align:center;
+.flex-container li{
+	margin:20px 120px 10px;
+}
+
+.flex-container li a{
+	display: block;
+	padding: 50px;
 }
 
 footer{
+	margin-top:35px;
 	background-color:grey;
-	padding-bottom:15px;
-	font-family:"Georgia",serif;
-	text-align:left;
 }
 
-li b{
-	color:white;
-	padding:80px;
-	margin:80px;
+table{
+	margin-left:550px;
 }
 
+.homem{
+	background:url("../images/homem.jpeg");
+	background-size:100px 100px;
+}
 
+.mulher{
+	background:url("../images/mulher.jpeg");
+	background-size:100px 100px;
+}
 
 

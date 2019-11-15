@@ -10,8 +10,14 @@ var pool  = mysql.createPool({
     connectionLimit : 10,
     host     : 'remotemysql.com',
     user     : 'sx8vpPGlyW',
-    password :  process.env.DBPASS,
+    password :  'RtwbV40akY',
     database : 'sx8vpPGlyW'
 });
 
-module.exports.pool = pool;
+
+/*con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });*/
+
+  module.exports.pool = pool;

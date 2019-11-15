@@ -3,6 +3,12 @@
      <head>
 	      <title>uWork_Meus_Servicos</title>
 		  <link rel="stylesheet" type="text/css" href="./stylesheets/Meus_Servicos.css">
+		  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+		     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		     crossorigin=""/>
+		  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+		     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+		     crossorigin=""></script>
      </head>
 	        <body>
 	   		 <header>
@@ -23,9 +29,12 @@
 			 <main>
 				 <h3> Suas subscrições: </h3>
 				 <ul class="flex-container">
-					 <li class="mulher" style="width:100px;height:100px;"> </li>
+					 <li class="mulher" style="width:100px;height:100px;"><a href="Subscrever.html"> </a> </li>
 				 </ul>
+				 
+				 <div id="mapid"></div>
 			 </main>
+			 <script src="./javascripts/script1.js"></script>
 			 
 		 <footer>
 			 <table>

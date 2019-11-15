@@ -1,4 +1,5 @@
 body header{
+	grid-area: header;
 	background-color:lightblue;
 	border-radius: 25px;
 	font-family:"Georgia",serif;
@@ -8,10 +9,21 @@ body header{
 body{
 	background-image:url("../images/blue-css-background-gradient-9.jpg");
 	background-repeat:repeat-x;
+	display:grid;
+	grid-template-columns: repeat(3,1f);
+	grid-template-areas:
+	'header header header'
+	'nav nav nav'
+	'main main main'
+	'footer footer footer';
 }
 
 body main{
 	padding-bottom:95px;
+}
+
+nav{
+	grid-area:nav;
 }
 
 nav ul{
@@ -35,11 +47,36 @@ nav li a {
   text-decoration: none;
 }
 
+main{
+	grid-area:main;
+}
+main header{
+	border-radius:0;
+	width:100px;
+	margin:50px 50px 20px;
+}
+
+div button{
+	background-color:grey;
+	margin:200px 10px 10px 1000px;
+}
+
 footer{
-	margin-top:480px;
+	grid-area:footer;
+	margin-top:50px;
 	background-color:grey;
 }
 
 table{
 	margin-left:550px;
+}
+
+#homem{
+	background:url("../images/homem.jpeg");
+	background-size:100px 100px;
+}
+
+#mulher{
+	background:url("../images/mulher.jpeg");
+	background-size:100px 100px;
 }

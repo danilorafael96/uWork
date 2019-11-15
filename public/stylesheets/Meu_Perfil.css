@@ -1,4 +1,5 @@
 body header{
+	grid-area: header;
 	background-color:lightblue;
 	background-repeat:repeat;
 	border-radius: 25px;
@@ -9,6 +10,17 @@ body header{
 body{
 	background-image:url("../images/blue-css-background-gradient-9.jpg");
 	background-repeat:repeat-x;
+	display:grid;
+	grid-template-columns: repeat(3,1f);
+	grid-template-areas:
+	'header header header'
+	'nav nav nav'
+	'main main main'
+	'footer footer footer';
+}
+
+nav{
+	grid-area:nav;
 }
 
 nav ul{
@@ -32,6 +44,7 @@ nav li a {
 }
 
 footer{
+	grid-area:footer;
 	margin-top:480px;
 	background-color:grey;
 }

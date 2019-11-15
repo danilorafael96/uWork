@@ -20,7 +20,7 @@ body{
 }
 
 nav{
-	grid-area:nav;
+	grid-area: nav;
 }
 
 nav ul{

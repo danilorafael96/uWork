@@ -1,4 +1,5 @@
 body header{
+	grid-area:header;
 	background-color:lightblue;
 	background-repeat:repeat;
 	border-radius: 25px;
@@ -9,6 +10,17 @@ body header{
 body{
 	background-image:url("../images/blue-css-background-gradient-9.jpg");
 	background-repeat:repeat-x;
+	display:grid;
+	grid-template-columns: repeat(3,1f);
+	grid-template-areas:
+	'header header header'
+	'nav nav nav'
+	'main main main'
+	'footer footer footer';
+}
+
+nav{
+	grid-area:nav;
 }
 
 nav ul{
@@ -31,6 +43,10 @@ nav li a {
   text-decoration: none;
 }
 
+main{
+	grid-area: main;
+}
+
 .flex-container{
 	list-style-type:none;
 	display:flex;
@@ -49,7 +65,8 @@ nav li a {
 }
 
 footer{
-	margin-top:235px;
+	grid-area: footer;
+	margin-top:60px;
 	background-color:grey;
 }
 
@@ -65,4 +82,11 @@ table{
 .mulher{
 	background:url("../images/mulher.jpeg");
 	background-size:100px 100px;
+}
+
+#mapid { 
+	margin-top:60px;
+	margin-left:800px;
+	height: 200px;
+	width: 250px;
 }

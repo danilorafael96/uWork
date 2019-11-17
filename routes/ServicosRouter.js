@@ -1,5 +1,5 @@
 var express = require("express");
-var ServicosDao = require("../models/ServicosDao");
+var ServicosDao = require("../models/ServicosDAO");
 var router = express.Router();
 
 router.get('/',function(req,res,next){

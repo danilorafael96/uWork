@@ -1,5 +1,5 @@
 var express = require('express');
-var PersonalTrainerDao=  require ('../models/PersonalTrainerDao');
+var PersonalTrainerDao=  require ('../models/PersonalTrainerDAO');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {

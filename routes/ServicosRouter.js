@@ -3,6 +3,7 @@ var express = require('express');
 var ServicosDao = require('../models/ServicosDAO');
 var router = express.Router();
 
+
 router.get('/',function(req,res,next){
   /*  ServicosDao.getServNome(function(err,result){
         if(err){

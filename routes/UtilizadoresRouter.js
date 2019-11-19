@@ -2,7 +2,7 @@ var express=require("express");
 var UtilizadoresDao = require("../models/UtilizadoresDAO");
 var router = express.Router();
 
-router.get("/", function(res,next){
+router.get("/", function(req,res,next){
     UtilizadoresDao.getUtilizadores(function(err,result){
         if(err){
             res.status(result.code).json(err);

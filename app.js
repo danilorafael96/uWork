@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var PersonalTrainerRouter = require("./routes/PersonalTrainerRouter");
 var ServicosRouter = require('./routes/ServicosRouter');
+var UtilizadoresRouter = require('./routes/UtilizadoresRouter');
 
 app.use(function(req,res,next){
   req.con=con;
@@ -34,6 +35,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/pts', PersonalTrainerRouter);
 app.use('/api/servicos', ServicosRouter);
+app.use('/api/utilizadores',UtilizadoresRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

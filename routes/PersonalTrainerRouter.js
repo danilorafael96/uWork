@@ -2,7 +2,7 @@ var express = require('express');
 var PersonalTrainerDao=  require ('../models/PersonalTrainerDAO');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', function(res, next) {
     PersonalTrainerDao.getPtsId(function(err,result){
         if (err) {
             // sending error because its for learning/debugging

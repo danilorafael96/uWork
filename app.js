@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var app = express();
-var con= require("./models/MysqlConfig");
+var con= require('./models/MysqlConfig');
 
 
 var indexRouter = require('./routes/index');

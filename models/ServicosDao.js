@@ -1,4 +1,4 @@
-var pool = require("./MysqlConfig").pool;
+var pool = require('./MysqlConfig').pool;
 
 module.exports.getServNome=function(callback,next){
     pool.getConnection(function(err,conn){

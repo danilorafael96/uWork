@@ -8,7 +8,7 @@ router.get("/", function(res,next){
             res.status(result.code).json(err);
             return;
         }
-        res.status(result.code).send(result);
+        res.status(result.code).send(result.data);
     },next)
 })
 

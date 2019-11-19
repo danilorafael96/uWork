@@ -1,4 +1,4 @@
-var loc = [38.753726, -9.199441];
+/*var loc = [38.753726, -9.199441];
 console.log("Start");
 window.onload = function () {
 	console.log("Loaded");
@@ -10,4 +10,4 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 	accessToken: 'pk.eyJ1IjoicmVuYXRvMTYiLCJhIjoiY2sycTN1cG9qMDhnNTNpcWZuNjlxM3phZCJ9.8XcsIyqd9Ejt_0eDYQLCcw'
 }).addTo(mymap);
 var marker = L.marker(loc).addTo(mymap);
-}
+} */

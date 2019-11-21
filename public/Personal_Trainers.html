@@ -3,6 +3,7 @@
      <head>
 	      <title>uWork_Personal_Trainers</title>
 		  <link rel="stylesheet" type="text/css" href="./stylesheets/Personal_Trainers.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      </head>
      <body>
 		 <header>
@@ -24,11 +25,9 @@
 			 
 				 <div class="dropdown">
 				   <button class="dropbtn">Tipos de serviço: </button>
-				   <div class="dropdown-content">
-				   <a href="#">Link 1</a>
-				   <a href="#">Link 2</a>
-				   <a href="#">Link 3</a>
-				   </div>
+				   <ul class='dropdown-content' id='nomeServicos' onmouseover='loadListaServicos()'>
+
+				   </ul>
 				 </div>
 				 
 				 <ul class="flex-container">

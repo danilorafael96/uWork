@@ -10,8 +10,6 @@ router.get("/", function(req,res,next){
         }
         res.status(result.code).send(result.data);
     },next)
-
-   // res.status(200).send({msg:"ok"});
 })
 
 module.exports=router;

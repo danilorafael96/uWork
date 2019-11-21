@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-     <head>
-	      <title>uWork_Personal_Trainers</title>
-		  <link rel="stylesheet" type="text/css" href="./stylesheets/Personal_Trainers.css">
-		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-     </head>
-     <body>
-		 <header>
-			    <h1> uWork </h1>
-				<p> Mantenha-se em forma! </p>
-				<br>
-		 </header>
+    <head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="./javascripts/script2.js"></script>
+		<title>uWork_Personal_Trainers</title>
+		<link rel="stylesheet" type="text/css" href="./stylesheets/Personal_Trainers.css">
+    </head>
+    <body>
+		<header>
+			<h1> uWork </h1>
+			<p> Mantenha-se em forma! </p>
+			<br>
+		</header>
 		 
-		 <nav>
-			  <ul>
-				  <li><a href="homeCliente.html">Home</a></li>
-				  <li><a href="Personal_Trainers.html">Personal trainers</a></li>
-				  <li><a href="Meus_Servicos.html">Meus serviços</a></li>
-				  <li><a href="Meu_Perfil.html">Meu perfil</a></li>
-			  </ul>
-		 </nav>
+		<nav>
+			<ul>
+				<li><a href="homeCliente.html">Home</a></li>
+				<li><a href="Personal_Trainers.html">Personal trainers</a></li>
+				<li><a href="Meus_Servicos.html">Meus serviços</a></li>
+				<li><a href="Meu_Perfil.html">Meu perfil</a></li>
+			</ul>
+		</nav>
 		 
-		 <main>
+		<main id = "nomeServicos">
 			 
-				 <div class="dropdown">
-				   <button class="dropbtn">Tipos de serviço: </button>
-				   <ul class='dropdown-content' id='nomeServicos' onmouseover='loadListaServicos()'>
+				<!--<div class="dropdown">
+				   <button class='dropbtn' >Tipos de serviço: </button>
+				   <ul class="dropdown-content" id='nomeServicos'>
 
 				   </ul>
-				 </div>
-				 
-				 <ul class="flex-container">
+				</div>-->
+			
+				<ul class="flex-container">
 				 	<li class="mulher" style="width:100px;height:100px;"><a href="Subscrever.html"> </a></li>
 					
 				 	<li class="homem" style="width:100px;height:100px;"> </li>
@@ -38,21 +39,21 @@
 				 	<li class="homem" style="width:100px;height:100px;"> </li>
 					
 				 	<li class="mulher" style="width:100px;height:100px;"> </li>
-			 	 </ul>
-		 </main>
+			 	</ul>
+		</main>
 		 
-		 <footer>
-			 <table>
-				 <tr>
-					 <th> uWork: </th>
-					 <th> Contactos: </th>
-				 </tr>
-				 <tr>
-					 <th> Sobre nós </th>
-					 <th> Email </th>
-				 </tr>
-			 </table>
-		 </footer>
+		<footer>
+			<table>
+				<tr>
+					<th> uWork: </th>
+					<th> Contactos: </th>
+				</tr>
+				<tr>
+					<th> Sobre nós </th>
+					<th> Email </th>
+				</tr>
+			</table>
+		</footer>
 		
-      </body>
+    </body>
 </html>

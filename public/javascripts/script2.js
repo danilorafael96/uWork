@@ -15,9 +15,9 @@ window.onload=function(){
 				console.log(JSON.stringify(res));
 				return;
 			}
-			var html="1";
+			var html="";
 			for(i in res){
-				html += "<section>" + res[i].serv_nome + "</section>";
+				html +="<li>" + res[i].serv_nome + "</li>";
 			}
 			servicos.innerHTML=html;
 		},

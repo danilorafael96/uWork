@@ -1,0 +1,91 @@
+body > header{
+	grid-area:header;
+	background-color:lightblue;
+	font-family:"Georgia",serif;
+	text-align:left;
+}
+
+body > header > h1{
+	margin-left: 25px;
+}
+
+body{
+	background-image:url("../images/blue-css-background-gradient-9.jpg");
+	background-repeat:repeat-x;
+	display:grid;
+	grid-template-columns: repeat(3,1f);
+	grid-template-areas:
+	'header header header'
+	'nav nav nav'
+	'main main main'
+	'footer footer footer';
+	grid-gap:10px;
+	background-repeat:repeat-x;
+}
+
+nav{
+	grid-area:nav;
+}
+
+nav > ul{
+	background-color:grey;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background-color: grey;
+}
+
+nav > ul >li{
+	float:left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+main{
+	grid-area: main;
+	background-color:grey;
+	height:445px;
+}
+
+.flex-container{
+	list-style-type:none;
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+}
+
+.flex-container > li{
+	margin:20px 120px 10px;
+	float: left;
+}
+
+.flex-container li a{
+	display: block;
+	padding: 50px;
+}
+
+footer{
+	grid-area: footer;
+	background-color:grey;
+}
+
+footer > table{
+	margin-left:550px;
+}
+
+.homem{
+	background:url("../images/homem.jpeg");
+	background-size:100px 100px;
+}
+
+.mulher{
+	background:url("../images/mulher.jpeg");
+	background-size:100px 100px;
+}

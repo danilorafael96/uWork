@@ -1,10 +1,12 @@
-body header{
+body > header{
 	grid-area:header;
 	background-color:lightblue;
-	background-repeat:repeat;
-	border-radius: 25px;
 	font-family:"Georgia",serif;
 	text-align:left;
+}
+
+body > header > h1{
+	margin-left: 25px;
 }
 
 body{
@@ -17,13 +19,16 @@ body{
 	'nav nav nav'
 	'main main main'
 	'footer footer footer';
+	grid-gap:10px;
+	background-repeat:repeat-x;
 }
 
 nav{
 	grid-area:nav;
 }
 
-nav ul{
+nav > ul{
+	background-color:grey;
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -31,7 +36,7 @@ nav ul{
 	background-color: grey;
 }
 
-nav li{
+nav > ul >li{
 	float:left;
 }
 
@@ -45,18 +50,24 @@ nav li a {
 
 main{
 	grid-area: main;
+	background-color:grey;
+	height:445px;
+}
+
+main section h3{
+	float: left;
 }
 
 .flex-container{
 	list-style-type:none;
 	display:flex;
-	flex-direction:row;
+	flex-direction:column;
 	flex-wrap:wrap;
-	padding:30px;
 }
 
-.flex-container li{
-	margin:20px 120px 10px;
+.flex-container > li{
+	margin-top: 20px;
+	float: left;
 }
 
 .flex-container li a{
@@ -66,11 +77,10 @@ main{
 
 footer{
 	grid-area: footer;
-	margin-top:60px;
 	background-color:grey;
 }
 
-table{
+footer > table{
 	margin-left:550px;
 }
 
@@ -84,9 +94,26 @@ table{
 	background-size:100px 100px;
 }
 
+.areas{
+    display:flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.info{
+    flex:1;
+    height:400px;
+    background-color:rgba(212, 203, 203, 0.719);
+    margin:10px;
+}
+
+#mapa{
+	margin:10px;
+}
+
 #mapid { 
-	margin-top:60px;
-	margin-left:800px;
-	height: 200px;
-	width: 250px;
+	float: right;
+	margin-bottom: 10px;
+	height: 400px;
+	width: 610px;
 }

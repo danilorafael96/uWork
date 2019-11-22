@@ -1,9 +1,12 @@
-body header{
+body > header{
 	grid-area: header;
 	background-color:lightblue;
-	border-radius: 25px;
 	font-family:"Georgia",serif;
 	text-align:left;
+}
+
+body > header > h1{
+	margin-left: 25px;
 }
 
 body{
@@ -16,13 +19,15 @@ body{
 	'nav nav nav'
 	'main main main'
 	'footer footer footer';
+	grid-gap:10px;
+	background-repeat: repeat-x;
 }
 
 nav{
 	grid-area: nav;
 }
 
-nav ul{
+nav > ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -30,7 +35,7 @@ nav ul{
 	background-color: grey;
 }
 
-nav li{
+nav > ul > li{
 	float:left;
 }
 
@@ -43,15 +48,15 @@ nav li a {
 }
 
 main{
+	background-color:rgba(212, 203, 203, 0.719);
 	grid-area: main;
-	padding-bottom:95px;
+	height: 445px;
 }
 
 .dropbtn {
   background-color:grey;
   color: white;
   padding: 10px;
-  margin-top:10px;
   font-size: 12px;
   border: none;
   cursor: pointer;
@@ -107,11 +112,10 @@ main{
 
 footer{
 	grid-area: footer;
-	margin-top:35px;
 	background-color:grey;
 }
 
-table{
+footer > table{
 	margin-left:550px;
 }
 

@@ -1,7 +1,6 @@
-body header{
+body > header{
 	grid-area: header;
 	background-color:lightblue;
-	background-repeat:repeat;
 	font-family:"Georgia",serif;
 	text-align:left;
 }
@@ -11,24 +10,22 @@ body > header > h1{
 }
 
 body{
-	background-image:url("../images/blue-css-background-gradient-9.jpg");
-	background-repeat:repeat-x;
 	display:grid;
-	grid-template-columns: repeat(3,1f);
+	grid-template-columns:repeat(3,1f);
 	grid-template-areas:
 	'header header header'
 	'nav nav nav'
 	'main main main'
 	'footer footer footer';
+	background-image:url("../images/blue-css-background-gradient-9.jpg");
 	grid-gap:10px;
 	background-repeat:repeat-x;
 }
-
 nav{
-	grid-area:nav;
+	grid-area: nav;
 }
 
-nav ul{
+nav > ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -36,11 +33,11 @@ nav ul{
 	background-color: grey;
 }
 
-nav li{
+nav > ul > li{
 	float:left;
 }
 
-nav li a {
+a {
   display: block;
   color: white;
   text-align: center;
@@ -57,7 +54,7 @@ main > section{
 	background-color:grey;
 	color:white;
 	width: 800px;
-	height: 400px;
+	height: 430px;
 }
 
 footer{

@@ -1,10 +1,12 @@
-body header{
+body > header{
 	grid-area: header;
 	background-color:lightblue;
-	background-repeat:repeat;
-	border-radius: 25px;
 	font-family:"Georgia",serif;
 	text-align:left;
+}
+
+body > header > h1{
+	margin-left: 25px;
 }
 
 body{
@@ -17,13 +19,16 @@ body{
 	'nav nav nav'
 	'main main main'
 	'footer footer footer';
+	grid-gap:10px;
+	background-repeat: repeat-x;
+
 }
 
 nav{
-	grid-area: nav;
+	grid-area:nav;
 }
 
-nav ul{
+nav > ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
@@ -31,7 +36,7 @@ nav ul{
 	background-color: grey;
 }
 
-nav li{
+nav > ul > li{
 	float:left;
 }
 
@@ -43,12 +48,17 @@ nav li a {
   text-decoration: none;
 }
 
+main{
+	grid-area: main;
+	background-color:grey;
+	height: 445px;
+}
+
 footer{
-	grid-area: footer;
-	margin-top:480px;
+	grid-area:footer;
 	background-color:grey;
 }
 
-table{
+footer > table{
 	margin-left:550px;
 }

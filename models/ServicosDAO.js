@@ -15,5 +15,4 @@ module.exports.getServNome=function(callback,next){
             callback(false,{code:200,status:"ok",data:results})
         })
     })
-    
 }

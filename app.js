@@ -9,7 +9,7 @@ var app = express();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var PersonalTrainerRouter = require("./routes/PersonalTrainerRouter");
+var PersonalTrainerRouter = require('./routes/PersonalTrainerRouter');
 var ServicosRouter = require('./routes/ServicosRouter');
 var ClienteRouter = require('./routes/ClienteRouter');
 

@@ -89,3 +89,9 @@ footer > table{
 	background:url("../images/mulher.jpeg");
 	background-size:100px 100px;
 }
+
+.estilo{
+	border-top: 4px solid black;
+	width:500px;
+	top:30%;
+}

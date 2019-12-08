@@ -12,4 +12,14 @@ router.get('/',function(req,res,next){
     },next)
 })
 
+router.get('/:id',function(req,res,next){
+    PersonalTrainerDao.getPt(req.params.id,function(err,result){
+        if(err){
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    },next)
+})
+
 module.exports = router;

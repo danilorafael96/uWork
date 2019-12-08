@@ -78,6 +78,10 @@ main li a{
 	display: flex;
 }
 
+.estilo{
+	width:360px;
+}
+
 footer{
 	grid-area: footer;
 	background-color:grey;

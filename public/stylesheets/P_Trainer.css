@@ -52,14 +52,26 @@ main{
 	grid-area:main;
 }
 
+main section{
+	display: block;
+}
 
-main > section > p{
-	color:white;
+main ul{
+	text-align: left;
+}
+
+main img{
+	float: left;
+}
+
+main p{
+	text-align: left;
+	color:black;
 }
 
 button{
 	background-color:white;
-	margin:330px 0px 0px 400px;
+	margin:300px 0px 0px 450px;
 }
 
 footer{
@@ -82,17 +94,6 @@ footer > table{
     height:400px;
     background-color:rgba(212, 203, 203, 0.719);
     margin:10px;
-}
-
-#homem{
-	background:url("../images/homem.jpeg");
-	background-size:100px 100px;
-}
-
-#mulher{
-	background:url("../images/mulher.jpeg");
-	background-size:100px 100px;
-	margin: 10px;
 }
 
 #mapa{

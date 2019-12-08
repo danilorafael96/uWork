@@ -1,10 +1,9 @@
 
+
 window.onload = function () {
 	var servicos = document.getElementById('servicos');
 	var pts = document.getElementById("pts");
-	//var pt=document.getElementById("pt");
 	loadPts();
-	//loadPt();
 
 	$.ajax({
 		url: "/api/servicos",
@@ -19,7 +18,7 @@ window.onload = function () {
 			}
 			var html = "";
 			for (i in res) {
-				html += "<option value=" + i + ">" + res[i].serv_nome + "</option>"
+				html += "<option value=" + i + " onchange='filter()'>" + res[i].serv_nome + "</option>"
 			}
 			servicos.innerHTML = html;
 		},
@@ -27,7 +26,7 @@ window.onload = function () {
 			console.log(errStr);
 		}
 	})
-}
+
 	function loadPts() {
 
 		$.ajax({
@@ -43,7 +42,7 @@ window.onload = function () {
 				}
 				var html = "";
 				for (i in res) {
-					html += "<li id='pt' onclick='loadPt("+i+")'><a href='P_Trainer.html'><img src='"+res[i].pts_imagem+"'>" + res[i].serv_nome+" "+res[i].pts_nome + "</a></li>";
+					html += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'></li>";
 				}
 
 				pts.innerHTML = html;
@@ -52,16 +51,15 @@ window.onload = function () {
 				console.log(errStr);
 			}
 		})
+	}
+}
+
 /*
-	function loadPt(ptPos){
-		var pts=document.getElementById("pt");
-		var html="";
-		var pt=res[ptPos].personalTrainers;
+function filter(){
 
-		for(i in pt){
-			html+=""
-		}
+}*/
 
-				
-	}*/
+function openPt(pts_id) {
+	sessionStorage.setItem("ptId", pts_id);
+	window.location.href = "P_trainer.html";
 }

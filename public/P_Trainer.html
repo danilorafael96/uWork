@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head>
-	    <title>uWork_P_Trainer</title>
-		<link rel="stylesheet" type="text/css" href="./stylesheets/P_Trainer.css">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+
+<head>
+	<title>uWork_P_Trainer</title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/P_Trainer.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
 		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-		crossorigin=""/>
+		crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
 		integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
 		crossorigin=""></script>
-    </head>
-    <body>
-		<header>
-			<h1> uWork </h1>
-			<p> Mantenha-se em forma! </p>
-			<br>
-		</header>
-		 
-		<nav>
-			<ul>
-				<li><a href="homeCliente.html">Home</a></li>
-				<li><a href="P_Trainers.html">Personal trainers</a></li>
-				<li><a href="Servicos_Cliente.html">Serviços subscritos</a></li>
-				<li><a href="Perfil_Cliente.html">Meu perfil</a></li>
-				<li style="float: right;"><a href="index.html">Registo</a></li>
-				<li style="float: right;"><a href="index.html">Login</a></li>
-			</ul>
-		</nav>
-		
-		<main>
-			<section class="areas">
-				<section class="info">
-					<section id="mulher" style="width:100px;height:100px;"></section>
-					<p style="float: left;">Informação relacionada ao personal trainer e seus serviços prestados</p>
-				</section>
-					
-				<section class="info">
-					<ul id="servicosPT"> </ul>
-					<section>
-						<button style="width:130px;height:40px">Subscrever</button>
-					</section>
-				</section>
-				
-				
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="./javascripts/P_Trainer.js"></script>
+
+</head>
+
+<body>
+	<header>
+		<h1> uWork </h1>
+		<p> Mantenha-se em forma! </p>
+		<br>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="homeCliente.html">Home</a></li>
+			<li><a href="P_Trainers.html">Personal trainers</a></li>
+			<li><a href="Servicos_Cliente.html">Serviços subscritos</a></li>
+			<li><a href="Perfil_Cliente.html">Meu perfil</a></li>
+			<li style="float: right;"><a href="index.html">Registo</a></li>
+			<li style="float: right;"><a href="index.html">Login</a></li>
+		</ul>
+	</nav>
+
+	<main>
+		<section class="areas">
+			<section class="info">
+				<section id="imagem" ></section>
+				<p id="descricao"> </p>
 			</section>
 
-			<section id="mapa">
-				<section id="mapid"></section>
+			<section class="info">
+				<form action="subscreve()" id="servicosPT">
+
+					
+				</form>
+				<!-- <ul id="servicosPT"> </ul> -->
+				<!-- <section>
+					<button style="width:130px;height:40px">Subscrever</button>
+				</section> -->
 			</section>
-			
-			<script src="./javascripts/script1.js"></script>
-			
-			 
-		</main>
-		
-		<footer>
-			<table>
-				<tr>
-					<th> uWork: </th>
-					<th> Contactos: </th>
-				</tr>
-				<tr>
-					<th> Sobre nós </th>
-					<th> Email </th>
-				</tr>
-			</table>
-		</footer>
-    </body>
+
+
+		</section>
+
+		<section id="mapa">
+			<section id="mapid"></section>
+		</section>
+
+	</main>
+
+	<footer>
+		<table>
+			<tr>
+				<th> uWork: </th>
+				<th> Contactos: </th>
+			</tr>
+			<tr>
+				<th> Sobre nós </th>
+				<th> Email </th>
+			</tr>
+		</table>
+	</footer>
+</body>
+
 </html>

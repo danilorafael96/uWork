@@ -16,3 +16,14 @@ module.exports.getServNome=function(callback,next){
         })
     })
 }
+
+module.exports.Subscreve = function (obj, callback, next) {
+    pool.getConnection(function (err, conn) {
+        if (err)
+            callback(err, { code: 500, status: "Erro na conexão da base de dados" })
+        conn.query("INSERT INTO clientes_servicos(cliser_serv_id,cliserv_est_id) VALUES (?,'3')",[obj.servico],function(err,rows){
+            conn.release();
+            callback(rows);
+        })
+    })
+}

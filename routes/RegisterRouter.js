@@ -2,21 +2,31 @@ var express = require('express');
 var RegisterDAO = require('../models/RegisterDAO');
 var router = express.Router();
 
-/*router.get('/', function (req, res, next) {
-    RegisterDAO.getAll(function (result) {
+/*router.get('https://maps.googleapis.com/maps/api/geocode/json?', function (req, res, next) {
+    RegisterDAO.Convert(function (result) {
         res.send(result);
     });
 });*/
 
-router.post('/Register', function (req, res, next) {
+router.post('/', function (req, res, next) {
+    console.log("START")
     RegisterDAO.saveRegister(req.body, function (status, result) {
-        if (status.code == 200)
-            res.send(result);
-        else {
-            res.statusMessage = status.status;
-            res.status(status.code).send({});
-        }
+        res.send(result);
     });
+});
+
+
+
+router.get('/', function (req, res, next) {
+    RegisterDAO.getLatLong(function (err, result) {
+        if (err) {
+            // sending error because its for learning/debugging
+            // real project would only send a general message
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    }, next)
 });
 
 module.exports = router;

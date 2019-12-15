@@ -4,36 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <title>Uwork | Register</title>
 </head>
 
 <body>
-    <p>:Username:<input type="text" id="username"></p>
-    <p>:Password: <input type="text" id="password"></p>
-    <p>Nome: <input type="text" id="nome"></p>
-    <p>sexo: <input type="text" id="sexo"></p>
-    <p>LocalTreino: <input type="text" id="local"></p>
-    <p id="msg"></p>
-    <input type="button" value="Add" onclick="addElements()">>
+    <section id="search">
+        <p>Username:<input type="text" id="username"></p>
+        <p>Password: <input type="text" id="password"></p>  
+        <p>Nome: <input type="text" id="nome"></p>
+        <p>Email: <input type="text" id="email"></p>
+        <p>Data de Nascimento: <input type="date" id="data"></p>
+        <p>Sexo: M<input type="radio"  name="sexo" value="M"  id="sexo">
+                 F<input type="radio"  name="sexo" value="F"  id="sexo"></p> 
+        <p>LocalTreino: <input type="text" id="local"></p>
+        <!--<input type="text" name="addr" value="" id="addr" size="10" />-->
+        <button type="button" onclick="addr_search();">Search</button>
+        <div id="results"></div>
+        
+
+    </section>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
+
+/*function addr_search() {
+    var inp = document.getElementById("addr");
+
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+        var items = [];
+
+        $.each(data, function(key, val) {
+            items.push("<li><a href='#' onclick='chooseAddr(  \"" + val.osm_type + "\");return false;'>" + val.display_name + '</a></li>');
+        });
+
+		$('#results').empty();
+        if (items.length != 0) {
+            $('<p>', { html: "Search results:" }).appendTo('#results');
+            $('<ul/>', {
+                'class': 'my-new-list',
+                html: items.join('')
+            }).appendTo('#results');
+        } else {
+            $('<p>', { html: "No results found" }).appendTo('#results');
+        }
+    });
+}*/
+
+
+var loc;
+
+    function addr_search() {
+
+        var localTreino = document.getElementById("local").value
+        $.getJSON('http://nominatim.openstreetmap.org/search/'  + localTreino + '?format=json', function (data){
+            var lat = data[0].lat
+            var long = data[0].lon
+            console.log(lat + ',' + long)
+
+        loc = {
+            localTreino: localTreino,
+            lat: lat,
+            lng: long
+        }
+        // Apagar se tivermos o botao para verificar a morada  
+        addElements();
+
+        })
+    }
+
+
     function addElements() {
         var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var nome = document.getElementById("nome").value;
         var sexo = document.getElementById("sexo").value;
-        var localTreino = document.getElementById("localTreino").value.split(",")
-        $.ajax({
-            url: "/api/names/random/",
+        var dataNascimento = document.getElementById("data").value;
+        var localTreino = document.getElementById("local").value
+        
+        $.ajax({    
+            url: "/api/registers",
             method: "post",
             contentType: "application/json",
             data: JSON.stringify({
                 username: username,
+                email: email,
                 password: password,
                 nome: nome,
                 sexo: sexo,
-                localTreino: localTreino
+                dataNascimento: dataNascimento,
+                localTreino: localTreino,
+                lat: loc.lat,
+                lng: loc.lng
             }),
             success: function (data, status) {
                 document.getElementById("msg").innerHTML =
@@ -41,6 +104,7 @@
             }
         })
 
+        
     }
 </script>
 

@@ -1,52 +1,45 @@
-body header{
-	background-color:lightblue;
-	background-repeat:repeat;
-	border-radius: 25px;
-	font-family:"Georgia",serif;
-	text-align:left;
-}
-
 body{
+	display:grid;
+    grid-template-columns:repeat(2,1f);
+    grid-gap:10px;
+    grid-template-areas:
+    'header header'
+    'main main';
 	background-image:url("../images/blue-css-background-gradient-9.jpg");
 	background-repeat:repeat-x;
 }
 
-nav ul{
-	list-style-type:none;
-	margin:0;
-	padding:0;
-	overflow:hidden;
-	background-color: grey;
+body > header{
+    grid-area: header;
+    text-align:center;
 }
 
-nav li{
-	float:left;
+main{
+    grid-area: main;
 }
 
-nav li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
+label{
+    display:block;
+    margin-top: 20px;
 }
 
-#mapa{
-	margin:10px;
+a{
+    display:block;
+    background-color: rgb(0, 128, 53);
+    padding: 20px;
+    margin-top: 30px;
+    text-decoration: none;
 }
 
-#mapid { float: right;
-	margin-bottom: 10px;
-	height: 400px;
-	width: 610px;
-	
+.areas{
+    display:flex;
+    text-align: center;
+    justify-content: space-evenly;
 }
 
-footer{
-	margin-top:480px;
-	background-color:grey;
-}
-
-table{
-	margin-left:550px;
+.estilo{
+    flex:1;
+    height:200px;
+    background-color:rgba(0, 255, 157, 0.781);
+    margin:10px;
 }

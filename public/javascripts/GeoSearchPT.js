@@ -9,10 +9,13 @@ const results = await provider.search({ query: input.value });
 
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
-const form = document.querySelector('#local');
-const input = form.querySelector('input[type="text"]');
+var formattedAddressOutput = '<ul class="list-group"><li class="list-group-item">${formattedAddress}</li></ul>'
+
+const form = document.getElementById('formatted-address').innerHTML= formattedAddressOutput;
+const input = form.querySelector('input[type="Adress"]');
 
 form.addEventListener('submit', async (event) => {
+  console.log("Saving Values");
   event.preventDefault();
 
   const results = await provider.search({ query: input.value });
@@ -23,7 +26,8 @@ form.addEventListener('submit', async (event) => {
 //Instead of es6 async / await you can also use promises like:
 
 provider
-  .search({ query: '...' })
+  .search({ query: 'Praceta Humberto da Cruz 9, Queluz, Sintra&format=geocodejson' })
   .then(function(result) { 
+    console.log(results);
     // do something with result;
   });

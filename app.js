@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var PersonalTrainerRouter = require("./routes/PersonalTrainerRouter");
 var ServicosRouter = require('./routes/ServicosRouter');
 var ClienteRouter = require('./routes/ClienteRouter');
-
+var RegisterRouter = require('./routes/RegisterRouter');
 
 app.use(function(req,res,next){
   req.con=con;
@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/pts', PersonalTrainerRouter);
 app.use('/api/servicos', ServicosRouter);
 app.use('/api/clientes', ClienteRouter);
+app.use('/api/registers', RegisterRouter);      
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -16,14 +16,16 @@ window.onload = function () {
     var marker = L.marker(loc).addTo(mymap);
 
 
-    var img = document.getElementById("imagem");
-    var descr = document.getElementById("descricao");
-    var servs = document.getElementById("servicosPT");
+    var imagem = document.getElementById("imagem");
+    var nome = document.getElementById("nomePt")
+    var descricao = document.getElementById("descricao");
+    var servicosPT = document.getElementById("servicosPT");
+   
+    
 
-    loadPtInfo(img, descr, servs);
-    subscreve();
+    loadPtInfo(imagem, nome, descricao, servicosPT);
 
-    function loadPtInfo() {
+    function loadPtInfo(img, nomePt, desc, serv) {
         $.ajax({
             url: "/api/pts/" + ptId,
             method: "get",
@@ -35,19 +37,16 @@ window.onload = function () {
                     console.log(JSON.stringify(res));
                     return;
                 }
+                img.src = res.utiliz_imagem;
+                nomePt.innerHTML = res.utiliz_nome;
+                desc.innerHTML = res.pts_descricao;
 
                 var html = "";
-                var html2 = "";
-                var html3 = "";
-
-                for (i in res) {
-                    html = "<img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>";
-                    html2 = "<p style='float: left;' id='descricao'>" + res[i].pts_descricao + "</p>";
-                    html3 = "<input type='checkbox' name='serviço' value='' id='servico'>" + res[i].serv_nome;
+                for (i in res.servicos) {
+                    var servicos = res.servicos[i];
+                    html += "<input type='checkbox' name='servico' value='" + servicos.servpts_serv_id + "' id='servico'>" + servicos.serv_nome;
                 }
-                img.innerHTML = html;
-                descr.innerHTML = html2;
-                servs.innerHTML = html3;
+                serv.innerHTML = html;
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);
@@ -55,16 +54,44 @@ window.onload = function () {
         })
     }
 
-    function subscreve() {
-        var subs = document.getElementById("servico").value;
-        
-        $.ajax({
-            url: "/api/servicos/",
-            method: "post",
-            contentType: "aplication/json",
-            data: JSON.stringify({
-                subs: subs
-            })
-        })
-    }
 }
+
+function Subscrever(cliId) {
+    var servico= document.getElementById("servico");
+    $.ajax({
+        url: "/api/clientes/" + cliId + "/subscricoes",
+        method: "post",
+        contentType: "application/json",
+        data: JSON.stringify({
+            servico: servico.value,
+            personalTrainer: ptId
+        }),
+        success: function (data, status) {
+            window.location = "/Servicos_Cliente.html"
+        }
+    })
+}
+
+/*
+function Subscrever(cliId) {
+    //var servico= document.getElementById("servico");
+    var servicos=document.forms[0];
+    var servicosLista = [];
+    for(var i=0;i<servicos.length;i++){
+        if(servicos[i].checked){
+            servicosLista[i]=servicos[i].value
+        }
+    }
+    $.ajax({
+        url: "/api/clientes/" + cliId + "/subscricoes",
+        method: "post",
+        contentType: "application/json",
+        data: JSON.stringify({
+            servicosChecked: servicosLista,
+            personalTrainer: ptId
+        }),
+        success: function (data, status) {
+            window.location = "/Servicos_Cliente.html"
+        }
+    })
+}*/

@@ -47,7 +47,7 @@ nav li a {
   text-decoration: none;
 }
 
-main{
+main {
 	background-color:rgba(212, 203, 203, 0.719);
 	grid-area: main;
 }
@@ -62,24 +62,20 @@ main p select{
 	width:80px;
 }
 
-main ul{
+main ul {
 	display: flex;
 	list-style-type:none;
-	flex-direction:row;
 	flex-wrap:wrap;
 	background-color: grey;
 }
 
 main li{
 	margin:20px 120px 10px;
+	flex-direction:column;
 }
 
-main li a{
-	display: flex;
-}
-
-.estilo{
-	width:360px;
+main li img:hover{
+	cursor: -webkit-grab; cursor: grab;
 }
 
 footer{

@@ -5,7 +5,7 @@ module.exports.getPts = function (callback, next) {
         if (err)
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
 
-        conn.query("SELECT * FROM personalTrainers,utilizadores,servicos,servicos_personalTrainers WHERE pts_utiliz_id=utiliz_id and servpts_pts_id=pts_id and servpts_serv_id=serv_id", function (err, results) {
+        conn.query("SELECT pts_id,utiliz_nome,utiliz_imagem FROM personalTrainers,utilizadores where pts_utiliz_id=utiliz_id", function (err, results) {
             conn.release();
             if (err) {
                 callback(err, { code: 500, status: "Erro na conexão da base de dados" })
@@ -20,17 +20,24 @@ module.exports.getPt = function (id, callback, next) {
     pool.getConnection(function (err, conn) {
         if (err)
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
-        conn.query("select pts_id, pts_descricao, utiliz_imagem, serv_nome, servpts_preco from personalTrainers, utilizadores,servicos,servicos_personalTrainers where pts_utiliz_id=utiliz_id and servpts_serv_id=serv_id and servpts_pts_id=pts_id and pts_id=?", [id], function (err, results) {
+        conn.query("select pts_id,utiliz_nome, pts_descricao, utiliz_imagem, serv_id, serv_nome, servpts_preco from personalTrainers, utilizadores,servicos,servicos_personalTrainers where pts_utiliz_id=utiliz_id and servpts_serv_id=serv_id and servpts_pts_id=pts_id and pts_id=?", [id], function (err, pt) {
             if (err) {
                 callback(err, { code: 500, status: "Erro na conexão da base de dados" })
                 return;
             }
-            callback(false, { code: 200, status: "ok", data: results })
+            conn.query("select serv_nome, servpts_serv_id from servicos,servicos_personalTrainers,personalTrainers where servpts_serv_id=serv_id and servpts_pts_id=pts_id and pts_id= ?", [id], function (err, servicos) {
+                conn.release();
+                if (err) {
+                    callback(err, { code: 500, status: "Error in a database query" })
+                    return;
+                }
+                var result = pt[0];
+                result.servicos = servicos;
+                callback(false, { code: 200, status: "ok", data: result })
+            })
         })
     })
 }
-
-
 
 
 /*

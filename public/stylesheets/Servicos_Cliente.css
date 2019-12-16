@@ -51,24 +51,22 @@ nav li a {
 main{
 	grid-area: main;
 	background-color:grey;
-	height:445px;
 }
 
-.flex-container{
+main ul{
 	list-style-type:none;
 	display:flex;
 	flex-direction:column;
 	flex-wrap:wrap;
 }
 
-.flex-container > li{
-	margin:20px 120px 10px;
-	float: left;
+main li img{
+	width: 100px;
+	height: 100px;
 }
 
-.flex-container li a{
-	display: block;
-	padding: 50px;
+main li img:hover{
+	cursor: -webkit-grab; cursor: grab;
 }
 
 footer{
@@ -78,16 +76,6 @@ footer{
 
 footer > table{
 	margin-left:550px;
-}
-
-.homem{
-	background:url("../images/homem.jpeg");
-	background-size:100px 100px;
-}
-
-.mulher{
-	background:url("../images/mulher.jpeg");
-	background-size:100px 100px;
 }
 
 .estilo{

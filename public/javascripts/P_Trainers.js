@@ -20,7 +20,7 @@ window.onload = function () {
 			for (i in res) {
 				html += "<option value=" + i + " onchange='filter()'>" + res[i].serv_nome + "</option>"
 			}
-			servicos.innerHTML = html;
+			//servicos.innerHTML = html;
 		},
 		error: function (jqXHR, errStr, errThrown) {
 			console.log(errStr);

@@ -21,7 +21,7 @@ module.exports.getClienteId = function (id, callback, next) {
         if (err) {
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
         }
-        conn.query("select cli_id,utiliz_nome,estado_id,estado_nome, subs_servpts_id from clientes,subscricoes,estadoSubscricao,utilizadores,servicos_personalTrainers where cli_utiliz_id=utiliz_id and subs_estado_id=estado_id and subs_servpts_id=servpts_id and subs_cli_id=cli_id and cli_id=?",
+        conn.query("select cli_id,cli_morada,utiliz_nome,utiliz_email,utiliz_dtnsc,estado_id,estado_nome,servpts_pts_id, subs_servpts_id from clientes,subscricoes,estadoSubscricao,utilizadores,servicos_personalTrainers,personalTrainers where cli_utiliz_id=utiliz_id and subs_estado_id=estado_id and subs_servpts_id=servpts_id and subs_cli_id=cli_id and servpts_pts_id=pts_id and cli_id=?",
             [id], function (err, results) {
                 conn.release();
                 if (err) {

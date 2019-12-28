@@ -6,7 +6,7 @@ window.onload = function () {
 
     function loadSubs(cliId) {
         $.ajax({
-            url: "/api/clientes/"+cliId+"/subscricoes",
+            url: "/api/clientes/"+cliId,
             method: "get",
             contentType: "aplication/json",
             dataType: "json",
@@ -18,7 +18,7 @@ window.onload = function () {
                 }
                 var html = "";
                 for (i in res) {
-                    html += "<li onclick='openPt(" + res[i].pts_id + ")'><img src="+ res[i].utiliz_imagem +" alt='personalTrainer'>"+res[i].serv_nome+" "+res[i].est_nome+"</li>"
+                    html += "<li onclick='openPt(" + res[i].pts_id + ")'>"+res[i].estado_nome+"</li>"
                 }
                 ptSubscricao.innerHTML = html;
             },

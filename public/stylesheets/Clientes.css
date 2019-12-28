@@ -54,7 +54,7 @@ main{
 	height:445px;
 }
 
-main section h3{
+main section p{
 	float: left;
 }
 
@@ -65,14 +65,8 @@ main section h3{
 	flex-wrap:wrap;
 }
 
-.flex-container > li{
-	margin-top: 20px;
+main section ul li img{
 	float: left;
-}
-
-.flex-container li a{
-	display: block;
-	padding: 50px;
 }
 
 footer{

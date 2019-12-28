@@ -29,7 +29,7 @@ window.onload = function () {
         $.ajax({
             url: "/api/pts/" + ptId,
             method: "get",
-            contentType: "aplication/json",
+            contentType: "application/json",
             dataType: "json",
             success: function (res, status, jqXHR) {
                 console.log(status);

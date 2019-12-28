@@ -12,15 +12,4 @@ router.get('/',function(req,res,next){
     },next)
 })
 
-/*
-router.post('/',function(req,res,next){
-    ServicosDao.Subscreve(req.body,function(status,result){
-        if(err){
-            res.status(result.code).json(err);
-            return;
-        }
-        res.status(result.code).send({});
-    },next)
-})*/
-
 module.exports=router;

@@ -7,9 +7,9 @@ window.onload=function(){
 
     loadDados(1);
 
-    function loadDados(cliId){
+    function loadDados(ptId){
         $.ajax({
-            url:"/api/clientes/"+ cliId,
+            url:"/api/pts/"+ ptId,
             method:"get",
             contentType: "aplication/json",
             dataType: "json",
@@ -19,16 +19,11 @@ window.onload=function(){
                     console.log(JSON.stringify(res));
                     return;
                 }
-                var html="";
-                var html1="";
-                var html2="";
-                var html3="";
-                for(i in res){
-                    html="<p>"+res[i].utiliz_nome+"</p>"
-                    html1="<p>"+res[i].utiliz_email+"</p>"
-                    html2="<p>"+res[i].utiliz_dtnsc+"</p>"
-                    html3="<p>"+res[i].cli_morada+"</p>"
-                }
+                var html="<p>"+res.utiliz_nome+"</p>"
+                var html1="<p>"+res.utiliz_email+"</p>"
+                var html2="<p>"+res.utiliz_dtnsc+"</p>"
+                var html3="<p>"+res.pts_localTreino+"</p>"
+                
                 nome.innerHTML=html;
                 email.innerHTML=html1;
                 datansc.innerHTML=html2;

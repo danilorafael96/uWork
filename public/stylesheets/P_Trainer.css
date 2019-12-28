@@ -56,8 +56,12 @@ main section{
 	display: block;
 }
 
-main ul{
+main section form{
 	text-align: left;
+}
+
+main section form input{
+	display: block;
 }
 
 main img{
@@ -93,7 +97,9 @@ footer > table{
     flex:1;
     height:400px;
     background-color:rgba(212, 203, 203, 0.719);
-    margin:10px;
+	margin:10px;
+	display: flex;
+	flex-direction: column;
 }
 
 #mapa{

@@ -20,7 +20,7 @@ module.exports.getPt = function (id, callback, next) {
     pool.getConnection(function (err, conn) {
         if (err)
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
-        conn.query("select pts_id,utiliz_nome, pts_descricao, utiliz_imagem, serv_id, serv_nome, servpts_preco from personalTrainers, utilizadores,servicos,servicos_personalTrainers where pts_utiliz_id=utiliz_id and servpts_serv_id=serv_id and servpts_pts_id=pts_id and pts_id=?", [id], function (err, pt) {
+        conn.query("select pts_id,utiliz_nome,utiliz_email,pts_localTreino,utiliz_dtnsc, pts_descricao, utiliz_imagem, serv_id, serv_nome, servpts_preco from personalTrainers, utilizadores,servicos,servicos_personalTrainers where pts_utiliz_id=utiliz_id and servpts_serv_id=serv_id and servpts_pts_id=pts_id and pts_id=?", [id], function (err, pt) {
             if (err) {
                 callback(err, { code: 500, status: "Erro na conexão da base de dados" })
                 return;
@@ -33,6 +33,29 @@ module.exports.getPt = function (id, callback, next) {
                 }
                 var result = pt[0];
                 result.servicos = servicos;
+                callback(false, { code: 200, status: "ok", data: result })
+            })
+        })
+    })
+}
+
+module.exports.getPtSubs = function (id, callback, next) {
+    pool.getConnection(function (err, conn) {
+        if (err)
+            callback(err, { code: 500, status: "Erro na conexão da base de dados" })
+        conn.query("select subs_servpts_id,pts_id from subscricoes, servicos_personalTrainers,personalTrainers where subs_servpts_id=servpts_id and servpts_id=pts_id and pts_id=?", [id], function (err, pt) {
+            if (err) {
+                callback(err, { code: 500, status: "Erro na conexão da base de dados" })
+                return;
+            }
+            conn.query("select subs_cli_id,utiliz_nome,estado_nome,utiliz_imagem from subscricoes,clientes,utilizadores,estadoSubscricao,servicos_personalTrainers,personalTrainers where subs_cli_id=cli_id and subs_estado_id=estado_id and cli_utiliz_id=utiliz_id and subs_servpts_id=servpts_id and servpts_id=pts_id and pts_id= ?", [id], function (err, clientes) {
+                conn.release();
+                if (err) {
+                    callback(err, { code: 500, status: "Error in a database query" })
+                    return;
+                }
+                var result = pt[0];
+                result.clientes = clientes;
                 callback(false, { code: 200, status: "ok", data: result })
             })
         })

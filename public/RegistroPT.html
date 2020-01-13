@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./javascripts/RegistroPT.js"></script>
+
+    <title>uWork_RegistroPT</title>
+</head>
+
+<body>
+    <section id="search">
+        <p>Username:<input type="text" id="username"></p>
+        <p>Password: <input type="text" id="password"></p>
+        <p>Nome: <input type="text" id="nome"></p>
+        <p>Email: <input type="text" id="email"></p>
+        <p>Data de Nascimento: <input type="date" id="data"></p>
+        <p>Sexo: M<input type="radio" name="sexo" value="M" id="sexo">
+            F<input type="radio" name="sexo" value="F" id="sexo"></p>
+        <p>Imagem: Homem<input type="radio" name="imagem" value="./images/homem.jpeg" id="imagem">
+            Mulher<input type="radio" name="imagem" value="./images/mulher.jpeg" id="imagem"></p>
+        <label for="descrição">Uma breve descrição da área de formação</br></label>
+        <textarea id="descrição" placeholder="Descrição" name="descrição"></textarea></br>
+        <p>Local de treino: <input type="text" list="localList" id="local" onchange="addr_search()"></p>
+        <select id="localList"> </select>
+        <p id="msg"></p>
+
+        <input type="button" onclick="registrar()" value="Registrar">
+
+        <div id="results"></div>
+
+
+    </section>
+</body>
+
+</html>

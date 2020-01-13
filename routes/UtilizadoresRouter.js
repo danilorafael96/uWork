@@ -12,4 +12,36 @@ router.get("/", function(req,res,next){
     },next)
 })
 
+router.get("/clientes", function(req,res,next){
+    UtilizadoresDao.getClientes(function(err,result){
+        if(err){
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    },next)
+})
+
+router.post('/clientes', function (req, res, next) {
+    UtilizadoresDao.addRegistroCliente(req.body, function (status, result) {
+        res.send(result);
+    });
+});
+
+router.get("/personalTrainers", function(req,res,next){
+    UtilizadoresDao.getPts(function(err,result){
+        if(err){
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    },next)
+})
+
+router.post('/personalTrainers', function (req, res, next) {
+    UtilizadoresDao.addRegistroPT(req.body, function (status, result) {
+        res.send(result);
+    });
+});
+
 module.exports=router;

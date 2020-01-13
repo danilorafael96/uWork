@@ -1,6 +1,8 @@
 var loc = [38.7071382, -9.15238686328902];
 console.log("Start");
 
+var ptId = sessionStorage.getItem("ptId")
+
 window.onload = function () {
 
     console.log("Loaded");
@@ -15,9 +17,9 @@ window.onload = function () {
 
     var listaClientes= document.getElementById("listaClientes");
 
-    loadListaClientes(2);
+    loadListaClientes();
 
-    function loadListaClientes(ptId){
+    function loadListaClientes(){
         $.ajax({
             url:"api/pts/"+ptId+"/subscricoes",
             method: "get",
@@ -31,9 +33,8 @@ window.onload = function () {
                 }
 
                 var html = "";
-                for (i in res.clientes) {
-                    var clientes = res.clientes[i];
-                    html += "<li><img src=" + clientes.utiliz_imagem + " alt='' style='width:120px'>"+clientes.estado_nome+" </li>";
+                for (i in res) {
+                    html += "<li><img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'>"+res[i].utiliz_nome+" </li>";
                 }
                 listaClientes.innerHTML = html;
             },

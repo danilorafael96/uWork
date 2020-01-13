@@ -1,13 +1,16 @@
+var cliId=sessionStorage.getItem("cliId");
 
 window.onload=function(){
+    var imagem=document.getElementById("imagem");
     var nome=document.getElementById("nome");
     var email=document.getElementById("email");
     var datansc=document.getElementById("datansc");
+    var sexo=document.getElementById("sexo");
     var morada=document.getElementById("morada");
 
-    loadDados(1);
+    loadDados();
 
-    function loadDados(cliId){
+    function loadDados(){
         $.ajax({
             url:"/api/clientes/"+ cliId,
             method:"get",
@@ -19,20 +22,15 @@ window.onload=function(){
                     console.log(JSON.stringify(res));
                     return;
                 }
-                var html="";
-                var html1="";
-                var html2="";
-                var html3="";
+                
                 for(i in res){
-                    html="<p>"+res[i].utiliz_nome+"</p>"
-                    html1="<p>"+res[i].utiliz_email+"</p>"
-                    html2="<p>"+res[i].utiliz_dtnsc+"</p>"
-                    html3="<p>"+res[i].cli_morada+"</p>"
+                    imagem.src=res[i].utiliz_imagem
+                    nome.innerHTML="<p>Nome: "+res[i].utiliz_nome+"</p>"
+                    email.innerHTML="<p>Email: "+res[i].utiliz_email+"</p>"
+                    datansc.innerHTML="<p>Data de nascimento: "+res[i].utiliz_dtnsc+"</p>"
+                    sexo.innerHTML="<p>Sexo: "+res[i].utiliz_sexo+"</p>"
+                    morada.innerHTML="<p>Morada: "+res[i].cli_morada+"</p>"
                 }
-                nome.innerHTML=html;
-                email.innerHTML=html1;
-                datansc.innerHTML=html2;
-                morada.innerHTML=html3;
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);

@@ -2,6 +2,7 @@ var loc = [38.7071382, -9.15238686328902];
 console.log("Start");
 
 var ptId = sessionStorage.getItem("ptId");
+var cliId = sessionStorage.getItem("cliId");
 
 window.onload = function () {
 
@@ -20,10 +21,11 @@ window.onload = function () {
     var nome = document.getElementById("nomePt")
     var descricao = document.getElementById("descricao");
     var servicosPT = document.getElementById("servicosPT");
-   
-    
+
+
 
     loadPtInfo(imagem, nome, descricao, servicosPT);
+    Subscrever();
 
     function loadPtInfo(img, nomePt, desc, serv) {
         $.ajax({
@@ -44,7 +46,7 @@ window.onload = function () {
                 var html = "";
                 for (i in res.servicos) {
                     var servicos = res.servicos[i];
-                    html += "<input type='checkbox' name='servico' value='" + servicos.servpts_serv_id + "' id='servico'>" + servicos.serv_nome;
+                    html += "<input type='checkbox' name='servico' value='" + servicos.servpts_id + "' id='servPt'>" + servicos.serv_nome;
                 }
                 serv.innerHTML = html;
             },
@@ -53,21 +55,20 @@ window.onload = function () {
             }
         })
     }
-
 }
 
-function Subscrever(cliId) {
-    var servico= document.getElementById("servico");
+function Subscrever() {
+    var servPt = document.getElementById("servPt");
     $.ajax({
         url: "/api/clientes/" + cliId + "/subscricoes",
         method: "post",
         contentType: "application/json",
         data: JSON.stringify({
-            servico: servico.value,
-            personalTrainer: ptId
+            cliId: cliId,
+            servPt: servPt.value
         }),
         success: function (data, status) {
-            window.location = "/Servicos_Cliente.html"
+            window.location = "Servicos_Cliente.html"
         }
     })
 }

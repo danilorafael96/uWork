@@ -17,9 +17,9 @@ body{
 	'nav nav nav'
 	'main main main'
 	'footer footer footer';
-	background-image:url("../images/blue-css-background-gradient-9.jpg");
+	background-image:url("../images/home.jpg");/*url("../images/blue-css-background-gradient-9.jpg");*/
 	grid-gap:10px;
-	background-repeat:repeat-x;
+	background-repeat:repeat;
 }
 nav{
 	grid-area: nav;

@@ -1,11 +1,12 @@
+var ptId = sessionStorage.getItem("ptId");
 
 window.onload = function () {
     var servicosPt = document.getElementById("servicosPt");
     var servicosLista = document.getElementById("servicos");
-    loadServPt(2)
+    loadServPt()
     loadListaServicos()
 
-    function loadServPt(ptId) {
+    function loadServPt() {
         $.ajax({
             url: "api/pts/" + ptId,
             method: "get",
@@ -49,8 +50,11 @@ window.onload = function () {
 
                 var html = "";
                 for (i in res) {
-                    html += "<input type='checkbox' name='' value=" + res[i].serv_id + " id=''>" + res[i].serv_nome;
+                    //if (res[i].serv_nome !== servicosPt)
+                        html += "<input type='checkbox' name='' value=" + res[i].serv_id + " id=''>" + res[i].serv_nome;
                 }
+
+                console.log(servicosPt)
 
                 servicosLista.innerHTML = html;
 

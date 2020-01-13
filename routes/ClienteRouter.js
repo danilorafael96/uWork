@@ -24,7 +24,18 @@ router.get('/:id',function(req,res,next){
 
 router.post('/:id/subscricoes',function(req,res,next){
     console.log(req.body)
-    ClienteDAO.addSubscricao(req.body.servico,req.body.personalTrainer,function(err,result){
+    ClienteDAO.addSubscricao(req.body.cliId,req.body.servPt,function(err,result){
+        if(err){
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    },next)
+})
+
+router.get('/:id/subscricoes',function(req,res,next){
+    console.log(req.body)
+    ClienteDAO.getSubscricao(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;

@@ -9,6 +9,7 @@ var app = express();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var UtilizadoresRouter = require('./routes/UtilizadoresRouter');
 var PersonalTrainerRouter = require('./routes/PersonalTrainerRouter');
 var ServicosRouter = require('./routes/ServicosRouter');
 var ClienteRouter = require('./routes/ClienteRouter');
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/utilizadores',UtilizadoresRouter);
 app.use('/api/pts', PersonalTrainerRouter);
 app.use('/api/servicos', ServicosRouter);
 app.use('/api/clientes', ClienteRouter);

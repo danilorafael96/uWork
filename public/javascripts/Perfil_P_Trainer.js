@@ -1,13 +1,16 @@
+var ptId = sessionStorage.getItem("ptId");
 
 window.onload=function(){
+    var imagem=document.getElementById("imagem");
     var nome=document.getElementById("nome");
     var email=document.getElementById("email");
     var datansc=document.getElementById("datansc");
+    var sexo=document.getElementById("sexo");
     var morada=document.getElementById("morada");
 
-    loadDados(1);
+    loadDados();
 
-    function loadDados(ptId){
+    function loadDados(){
         $.ajax({
             url:"/api/pts/"+ ptId,
             method:"get",
@@ -19,15 +22,12 @@ window.onload=function(){
                     console.log(JSON.stringify(res));
                     return;
                 }
-                var html="<p>"+res.utiliz_nome+"</p>"
-                var html1="<p>"+res.utiliz_email+"</p>"
-                var html2="<p>"+res.utiliz_dtnsc+"</p>"
-                var html3="<p>"+res.pts_localTreino+"</p>"
-                
-                nome.innerHTML=html;
-                email.innerHTML=html1;
-                datansc.innerHTML=html2;
-                morada.innerHTML=html3;
+                imagem.src = res.utiliz_imagem
+                nome.innerHTML = "<p>Nome: " + res.utiliz_nome + "</p>"
+                email.innerHTML = "<p>Email: " + res.utiliz_email + "</p>"
+                datansc.innerHTML = "<p>Data de nascimento: " + res.utiliz_dtnsc + "</p>"
+                sexo.innerHTML = "<p>Sexo: " + res.utiliz_sexo + "</p>"
+                morada.innerHTML = "<p>Morada: " + res.pts_localTreino + "</p>"
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);

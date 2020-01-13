@@ -1,12 +1,13 @@
+var cliId=sessionStorage.getItem("cliId");
 
 window.onload = function () {
-    var ptSubscricao = document.getElementById("ptSubscricao");
+    var subscricoes = document.getElementById("subscricoes");
 
-    loadSubs(1);
+    loadSubs();
 
-    function loadSubs(cliId) {
+    function loadSubs() {
         $.ajax({
-            url: "/api/clientes/"+cliId,
+            url: "/api/clientes/"+cliId+"/subscricoes",
             method: "get",
             contentType: "aplication/json",
             dataType: "json",
@@ -18,9 +19,10 @@ window.onload = function () {
                 }
                 var html = "";
                 for (i in res) {
-                    html += "<li onclick='openPt(" + res[i].pts_id + ")'>"+res[i].estado_nome+"</li>"
+                    //html += "<li onclick='openPt(" + res[i].pts_id + ")'>"+res[i].estado_nome+"</li>"
+                    html+="<tr> <th onclick='openPt(" + res[i].pts_id + ")'> <img src='"+res[i].utiliz_imagem+"' alt='imagem'></th></tr> <tr><td>-"+res[i].utiliz_nome+"</td></tr> <tr><td>-"+res[i].serv_nome+"</td></tr> <tr><td>-"+res[i].pts_localTreino+"</td></tr> <tr><td>-"+res[i].estado_nome+"</td></tr>"
                 }
-                ptSubscricao.innerHTML = html;
+                subscricoes.innerHTML = html;
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);
@@ -31,5 +33,5 @@ window.onload = function () {
 
 function openPt(pts_id) {
 	sessionStorage.setItem("ptId", pts_id);
-	window.location.href = "P_trainer.html";
+	window.location.href = "P_Trainer.html";
 }

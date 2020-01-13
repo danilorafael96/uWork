@@ -53,19 +53,12 @@ main{
 	background-color:grey;
 }
 
-main ul{
-	list-style-type:none;
-	display:flex;
-	flex-direction:column;
-	flex-wrap:wrap;
+main table tr th{
+	border-top-style: solid;
+	padding-top: 10px;
 }
 
-main li img{
-	width: 100px;
-	height: 100px;
-}
-
-main li img:hover{
+main table tr th img:hover{
 	cursor: -webkit-grab; cursor: grab;
 }
 

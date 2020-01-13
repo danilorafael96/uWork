@@ -47,6 +47,8 @@ nav li a {
   text-decoration: none;
 }
 
+
+
 main {
 	background-color:rgba(212, 203, 203, 0.719);
 	grid-area: main;

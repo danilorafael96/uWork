@@ -11,17 +11,19 @@ function login() {
         contentType: "application/json",
         dataType: "json",
         success: function (result, status) {
+            var logado = false;
             for (i in result) {
                 if (result[i].utiliz_nome == utilizId && result[i].utiliz_password == password) {
 
                     alert("Login efectuado com sucesso. Bem vindo " + result[i].utiliz_nome)
                     window.location = "homeCliente.html"
                     sessionStorage.setItem("cliId", result[i].cli_id)
-                }
-                else {
-                    alert("Username ou Password não coincidem. Por favor preencher de novo.");
+                    logado = true;
                 }
             }
+            if (!logado)
+                alert("Username ou Password não coincidem. Por favor preencher de novo.");
+                
         },
         error: function (jqXHR, errStr, errorThrown) {
             console.log(errStr);
@@ -45,10 +47,9 @@ function loginPt() {
                     window.location = "homePT.html"
                     sessionStorage.setItem("ptId", result[i].pts_id)
                 }
-                else {
-                    alert("Username ou Password não coincidem. Por favor preencher de novo.");
-                }
             }
+            alert("Username ou Password não coincidem. Por favor preencher de novo.");
+                
         },
         error: function (jqXHR, errStr, errorThrown) {
             console.log(errStr);

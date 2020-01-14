@@ -5,6 +5,7 @@ window.onload = function () {
     var servicosLista = document.getElementById("servicos");
     loadServPt()
     loadListaServicos()
+    addServicos()
 
     function loadServPt() {
         $.ajax({
@@ -51,7 +52,7 @@ window.onload = function () {
                 var html = "";
                 for (i in res) {
                     //if (res[i].serv_nome !== servicosPt)
-                        html += "<input type='checkbox' name='' value=" + res[i].serv_id + " id=''>" + res[i].serv_nome;
+                        html += "<input type='checkbox' name='' value=" + res[i].serv_id + " id='servicos'>" + res[i].serv_nome;
                 }
 
                 console.log(servicosPt)
@@ -64,4 +65,23 @@ window.onload = function () {
             }
         })
     }
+}
+
+/////dúvida por tirar
+function novosServicos(){
+    var servicos=document.getElementById("servicos");
+
+    $.ajax({
+        url:"api/pts/"+ptId,
+        method:"post",
+        contentType:"application/json",
+        data:JSON.stringify({
+            ptId:ptId,
+            servicos:servicos.value,
+        }),
+        success: function (data, status) {
+            window.location = "Servicos_P_Trainer.html"
+        }
+
+    })
 }

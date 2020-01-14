@@ -21,11 +21,12 @@ window.onload = function () {
     var nome = document.getElementById("nomePt")
     var descricao = document.getElementById("descricao");
     var servicosPT = document.getElementById("servicosPT");
+    var btnCancelar = document.getElementById("btnCancelar");
 
 
 
     loadPtInfo(imagem, nome, descricao, servicosPT);
-    Subscrever();
+    mostraBotaoCancelar();
 
     function loadPtInfo(img, nomePt, desc, serv) {
         $.ajax({
@@ -46,9 +47,37 @@ window.onload = function () {
                 var html = "";
                 for (i in res.servicos) {
                     var servicos = res.servicos[i];
-                    html += "<input type='checkbox' name='servico' value='" + servicos.servpts_id + "' id='servPt'>" + servicos.serv_nome;
+                    html += "<input type='button' name='servico' value='subscrever' onclick='Subscrever(" + servicos.servpts_id + ")'>" + servicos.serv_nome;
                 }
                 serv.innerHTML = html;
+
+            },
+            error: function (jqXHR, errStr, errThrown) {
+                console.log(errStr);
+            }
+        })
+    }
+
+    function mostraBotaoCancelar() {
+        $.ajax({
+            url: "/api/pts/" + ptId + "/subscricoes",
+            method: "get",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res, status, jqXHR) {
+                console.log(status);
+                if (res.err) {
+                    console.log(JSON.stringify(res));
+                    return;
+                }
+
+                var html="";
+                for(i in res){
+                    if(res[i].subs_estado_id==2 && res[i].subs_cli_id==cliId){
+                        html="<button style='width:130px;height:40px' onclick='cancelar()'>Cancelar</button>"
+                    }
+                }
+                btnCancelar.innerHTML=html;
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);
@@ -57,15 +86,14 @@ window.onload = function () {
     }
 }
 
-function Subscrever() {
-    var servPt = document.getElementById("servPt");
+function Subscrever(servPt) {
     $.ajax({
         url: "/api/clientes/" + cliId + "/subscricoes",
         method: "post",
         contentType: "application/json",
         data: JSON.stringify({
             cliId: cliId,
-            servPt: servPt.value
+            servPt: servPt
         }),
         success: function (data, status) {
             window.location = "Servicos_Cliente.html"
@@ -74,8 +102,8 @@ function Subscrever() {
 }
 
 /*
-function Subscrever(cliId) {
-    //var servico= document.getElementById("servico");
+function Subscrever() {
+    //var servPt= document.getElementById("servPt");
     var servicos=document.forms[0];
     var servicosLista = [];
     for(var i=0;i<servicos.length;i++){

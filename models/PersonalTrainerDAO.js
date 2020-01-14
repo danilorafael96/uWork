@@ -40,12 +40,30 @@ module.exports.getPt = function (id, callback, next) {
     })
 }
 
+module.exports.addServicos = function (servpts_pts_id, servpts_serv_id, callback, next) {
+    pool.getConnection(function (err, conn) {
+        if (err) {
+            callback(err, { code: 500, status: "Erro na conexão da base de dados" })
+        }
+        conn.query("insert into servicos_personalTrainers (servpts_pts_id,servpts_serv_id) values (?,?)",
+            [servpts_pts_id, servpts_serv_id], function (err, results) {
+                conn.release();
+                if (err) {
+                    callback(err, { code: 500, status: "Erro na conexão da base de dados" })
+                    return;
+                }
+                callback(false, { code: 200, status: "ok", data: results })
+
+            })
+    })
+}
+
 module.exports.getPtSubs = function (id, callback, next) {
     pool.getConnection(function (err, conn) {
         if (err)
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
 
-        conn.query("select subs_cli_id,utiliz_imagem,utiliz_nome,cli_morada,utiliz_dtnsc,serv_nome from utilizadores,subscricoes,clientes,servicos_personalTrainers,personalTrainers,servicos where  subs_cli_id=cli_id and subs_servpts_id=servpts_id and cli_utiliz_id=utiliz_id and servpts_pts_id=pts_id and servpts_serv_id=serv_id and servpts_pts_id=?", [id], function (err, results) {
+        conn.query("select subs_cli_id,subs_estado_id,utiliz_imagem,utiliz_nome,cli_morada,utiliz_dtnsc,serv_nome from utilizadores,subscricoes,clientes,servicos_personalTrainers,personalTrainers,servicos where  subs_cli_id=cli_id and subs_servpts_id=servpts_id and cli_utiliz_id=utiliz_id and servpts_pts_id=pts_id and servpts_serv_id=serv_id and servpts_pts_id=?", [id], function (err, results) {
             conn.release();
             if (err) {
                 callback(err, { code: 500, status: "Erro na conexão da base de dados" })

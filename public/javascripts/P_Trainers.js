@@ -40,11 +40,8 @@ window.onload = function () {
 					console.log(JSON.stringify(res));
 					return;
 				}
-				var html = "";
-				/*for (i in res) {
-					html += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'></li>";
-				}*/
 
+				var html = "";
 				for (i in res) {
 					//html += "<img src=" + res[i].utiliz_imagem + " alt='personalTrainer' onclick='openPt(" + res[i].pts_id + ")'>";
 					html += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>" + res[i].serv_nome + "</li>"

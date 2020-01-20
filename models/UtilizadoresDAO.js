@@ -30,11 +30,11 @@ module.exports.getClientes=function(callback){
     })
 }
 
-module.exports.getPts=function(callback){
+module.exports.getPts=function(pts_id,callback){
     pool.getConnection(function(err,conn){
         if(err)
             callback(err,{code:500,status:"Erro na conexão da base de dados."})
-        conn.query("SELECT pts_id,utiliz_nome, utiliz_password FROM utilizadores, personalTrainers where pts_utiliz_id = utiliz_id",function(err,results){
+        conn.query("SELECT pts_lat,pts_long, utiliz_nome, utiliz_password FROM utilizadores, personalTrainers where pts_utiliz_id = utiliz_id and pts_id=?",[pts_id],function(err,results){
             conn.release();
             if(err){
                 callback(err,{code:500,status:"Erro na conexão da base de dados."})
@@ -56,7 +56,7 @@ module.exports.addRegistroPT = function (obj, callback, next) {
                     callback(err, { code: 500, status: "Erro na conexão da base de dados" })
                     return;
                 }
-                conn.query('INSERT INTO personalTrainers(pts_descricao,pts_localTreino,pts_lat,pts_long,pts_utiliz_id) VALUES (?,?,?,?,?)', [obj.descricao, obj.localTreino, obj.lat, obj.lng, result.insertId], function (err, rows) {
+                conn.query('INSERT INTO personalTrainers(pts_descricao,pts_localTreino,pts_lat,pts_long,pts_geom,pts_utiliz_id) VALUES (?,?,?,?,Point(?,?),?)', [obj.descricao, obj.localTreino, obj.lat, obj.lng,obj.lng, obj.lat, result.insertId], function (err, rows) {
                     conn.release();
                     if (err) {
                         callback(err, { code: 500, status: "Erro na conexão da base de dados" })

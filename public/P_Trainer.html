@@ -4,14 +4,15 @@
 <head>
 	<title>uWork_P_Trainer</title>
 	<link rel="stylesheet" type="text/css" href="./stylesheets/P_Trainer.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+		integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+		crossorigin="">
+		</script>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
 		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
 		crossorigin="" />
-	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-		integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-		crossorigin=""></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="./javascripts/P_Trainer.js"></script>
+	<link rel="stylesheet" href="./stylesheets/leaflet-routing-machine.css" />
 
 </head>
 
@@ -41,20 +42,20 @@
 				<p id="descricao"> </p>
 			</section>
 
-			<section class="info" >
-				<form id="servicosPT">
-
-					
-				</form>
-				<p id="btnCancelar"></p>
-				<button style="width:130px;height:40px" onclick="Subscrever()">Subscrever</button>
+			<section class="info">
+				<form id="servicosPT"></form>
 			</section>
 
 
 		</section>
 
 		<section id="mapa">
-			<section id="mapid"></section>
+			<section id="mapid">
+				<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+				<script src="./javascripts/leaflet-routing-machine.js"></script>
+				<script src="./javascripts/P_Trainer.js"> </script>
+
+			</section>
 		</section>
 
 	</main>
@@ -66,8 +67,8 @@
 				<th> Contactos: </th>
 			</tr>
 			<tr>
-				<th> Sobre nós </th>
-				<th> Email </th>
+				<th><a href="homeCliente.html"> Sobre nós </a></th>
+				<th><a href="mailto:uwork_services@uwork.com"></a> Email </th>
 			</tr>
 		</table>
 	</footer>

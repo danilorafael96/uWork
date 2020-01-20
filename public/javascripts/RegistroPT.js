@@ -64,7 +64,11 @@ function registrar() {
                 descricao: descricao,
                 localTreino: localTreino,
                 lat: loc.lat,
-                lng: loc.lng
+                lng: loc.lng,
+                ponto:[
+                    loc.lng,
+                    loc.lat
+                ]
             }),
             success: function (data, status) {
                 window.location = "LoginPT.html"

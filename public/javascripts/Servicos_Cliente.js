@@ -20,7 +20,7 @@ window.onload = function () {
                 var html = "";
                 for (i in res) {
                     //html += "<li onclick='openPt(" + res[i].pts_id + ")'>"+res[i].estado_nome+"</li>"
-                    html+="<tr> <th onclick='openPt(" + res[i].pts_id + ")'> <img src='"+res[i].utiliz_imagem+"' alt='imagem'></th></tr> <tr><td>-"+res[i].utiliz_nome+"</td></tr> <tr><td>-"+res[i].serv_nome+"</td></tr> <tr><td>-"+res[i].pts_localTreino+"</td></tr> <tr><td>-"+res[i].estado_nome+"</td></tr>"
+                    html+="<tr> <th onclick='openPt(" + res[i].pts_id + ")'> <img src='"+res[i].utiliz_imagem+"' alt='imagem'></th></tr> <tr><td>Personal trainer: "+res[i].utiliz_nome+"</td></tr> <tr><td>Serviço : "+res[i].serv_nome+"</td></tr> <tr><td>Localização: "+res[i].pts_localTreino+"</td></tr> <tr><td>Estado da subscrição: "+res[i].estado_nome+"</td></tr>"
                 }
                 subscricoes.innerHTML = html;
             },

@@ -5,13 +5,15 @@ body{
     grid-template-areas:
     'header header'
     'main main';
-	background-image:url("../images/blue-css-background-gradient-9.jpg");
-	background-repeat:repeat-x;
+    background-image:url("../images/index.jpg");
+    background-size: 1280px 752.88px;
+	background-repeat:repeat;
 }
 
 body > header{
     grid-area: header;
     text-align:center;
+    color:rgba(165, 89, 53);
 }
 
 main{

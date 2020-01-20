@@ -12,6 +12,16 @@ router.get('/',function(req,res,next){
     },next)
 })
 
+router.get('/servicos/:servId',function(req,res,next){
+    PersonalTrainerDao.getFiltroPts(req.params.servId,function(err,result){
+        if(err){
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    },next)
+})
+
 router.get('/:id',function(req,res,next){
     PersonalTrainerDao.getPt(req.params.id,function(err,result){
         if(err){
@@ -36,6 +46,17 @@ router.post('/:id',function(req,res,next){
 
 router.get('/:id/subscricoes',function(req,res,next){
     PersonalTrainerDao.getPtSubs(req.params.id,function(err,result){
+        if(err){
+            res.status(result.code).json(err);
+            return;
+        }
+        res.status(result.code).send(result.data);
+    },next)
+})
+
+
+router.get('/:ptId/servicos/clientes/:cliId',function(req,res,next){
+    PersonalTrainerDao.getSubsAtiva(req.params.ptId,req.params.cliId,req.params.ptId,req.params.cliId,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;

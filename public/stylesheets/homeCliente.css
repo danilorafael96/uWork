@@ -1,6 +1,6 @@
 body > header{
 	grid-area: header;
-	background-color:lightblue;
+	background-color:rgba(165, 89, 53);
 	font-family:"Georgia",serif;
 	text-align:left;
 }
@@ -17,7 +17,8 @@ body{
 	'nav nav nav'
 	'main main main'
 	'footer footer footer';
-	background-image:url("../images/home.jpg");/*url("../images/blue-css-background-gradient-9.jpg");*/
+	background-image:url("../images/home.jpg");
+	background-size: 1280px 752.88px;
 	grid-gap:10px;
 	background-repeat:repeat;
 }
@@ -51,7 +52,8 @@ main{
 
 main > section{
 	display:block;
-	background-color:grey;
+	background-color:rgba(165, 89, 53,0.5);
+	font-size: 20px;
 	color:white;
 	width: 800px;
 	height: 430px;
@@ -59,9 +61,9 @@ main > section{
 
 footer{
 	grid-area: footer;
-	background-color:grey;
+	background-color:rgba(165, 89, 53);
 }
 
-table{
+footer > table{
 	margin-left:550px;
 }

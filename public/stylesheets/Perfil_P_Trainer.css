@@ -1,6 +1,6 @@
 body > header{
 	grid-area: header;
-	background-color:lightblue;
+	background-color:rgba(165, 89, 53);
 	font-family:"Georgia",serif;
 	text-align:left;
 }
@@ -10,8 +10,9 @@ body > header > h1{
 }
 
 body{
-	background-image:url("../images/blue-css-background-gradient-9.jpg");
-	background-repeat:repeat-x;
+	background-image:url("../images/home.jpg");
+	background-size: 1280px 752.88px;
+	background-repeat:repeat;
 	display:grid;
 	grid-template-columns: repeat(3,1f);
 	grid-template-areas:
@@ -20,8 +21,6 @@ body{
 	'main main main'
 	'footer footer footer';
 	grid-gap:10px;
-	background-repeat: repeat-x;
-
 }
 
 nav{
@@ -50,13 +49,13 @@ nav li a {
 
 main{
 	grid-area: main;
-	background-color:grey;
+	background-color:rgb(128, 128, 128,0.4);
 	height: 445px;
 }
 
 footer{
 	grid-area:footer;
-	background-color:grey;
+	background-color:rgba(165, 89, 53);
 }
 
 footer > table{

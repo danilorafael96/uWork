@@ -1,3 +1,4 @@
+
 var ptId = sessionStorage.getItem("ptId");
 
 window.onload = function () {
@@ -5,7 +6,7 @@ window.onload = function () {
     var servicosLista = document.getElementById("servicos");
     loadServPt()
     loadListaServicos()
-    addServicos()
+    
 
     function loadServPt() {
         $.ajax({
@@ -23,7 +24,7 @@ window.onload = function () {
                 var html = "";
                 for (i in res.servicos) {
                     var s = res.servicos[i];
-                    html += "<li>" + s.serv_nome + "</li>"
+                    html += "<li value="+s.servpts_serv_id+" id='servId'>" + s.serv_nome + "</li>"
                 }
 
                 servicosPt.innerHTML = html;
@@ -35,10 +36,11 @@ window.onload = function () {
 
         })
     }
-
+/////////////////////// em progresso
     function loadListaServicos() {
+        var servId = document.getElementById("servId").value;
         $.ajax({
-            url: "api/servicos/",
+            url: "api/servicos/"+servId+"/pts/"+ptId,
             method: "get",
             contentType: "application/json",
             dataType: "json",

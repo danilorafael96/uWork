@@ -28,8 +28,8 @@ router.post('/clientes', function (req, res, next) {
     });
 });
 
-router.get("/personalTrainers", function(req,res,next){
-    UtilizadoresDao.getPts(function(err,result){
+router.get("/personalTrainers/:id", function(req,res,next){
+    UtilizadoresDao.getPts(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;

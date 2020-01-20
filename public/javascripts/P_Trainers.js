@@ -92,5 +92,5 @@ function filtroPts(servId) {
 
 function openPt(pts_id) {
 	sessionStorage.setItem("ptId", pts_id);
-	window.location.href = "P_trainer.html";
+	window.location.href = "P_Trainer.html";
 }

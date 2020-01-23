@@ -28,10 +28,10 @@ window.onload = function () {
 
 
 
-    loadPtInfo(imagem, nome, descricao, servicosPT);
+    loadPtInfo();
     getLocation()
 
-    function loadPtInfo(img, nomePt, descr, serv) {
+    function loadPtInfo() {
         $.ajax({
             url: "/api/pts/" + ptId + "/servicos/clientes/" + cliId,
             method: "get",
@@ -44,27 +44,41 @@ window.onload = function () {
                     return;
                 }
 
-
-
                 var html = "";
-                for (i in res) {
-                    img.src = res[0].utiliz_imagem;
-                    nomePt.innerHTML = res[0].utiliz_nome;
-                    descr.innerHTML = res[0].pts_descricao;
-                    if (res[i].subscrito == 1) {
-                        html += "<input type='button' name='servico' value='cancelar' onclick='Cancelar(" + res[i].servpts_id + ")'>" + res[i].serv_nome;
 
+                for (i in res) {
+                    if (res[i].subscrito == 1) {
+                        html += "<input type='button' name='servico' value='cancelar' onclick='Cancelar(" + res[i].servpts_id + ")'>" + res[i].serv_nome +" - "+ res[i].serv_preco +"€";
                     } else if (res[i].subscrito == 0) {
-                        html += "<input type='button' name='servico' value='subscrever' onclick='Subscrever(" + res[i].servpts_id + ")'>" + res[i].serv_nome;
+                        html += "<input type='button' name='servico' value='subscrever' onclick='Subscrever(" + res[i].servpts_id + ")'>" + res[i].serv_nome +" - "+ res[i].serv_preco +"€";
                     }
                 }
-                serv.innerHTML = html;
-
+                servicosPT.innerHTML = html;
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);
             }
-        })
+        }),
+
+        $.ajax({
+            url: "/api/pts/" + ptId,
+            method: "get",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res, status, jqXHR) {
+                console.log(status);
+                if (res.err) {
+                    console.log(JSON.stringify(res));
+                    return;
+                }
+
+                for(i in res){
+                    imagem.src=res[i].utiliz_imagem;
+                    nome.innerHTML=res[i].utiliz_nome;
+                    descricao.innerHTML=res[i].pts_descricao;
+                }
+            }
+        })      
     }
 }
 
@@ -78,7 +92,7 @@ function Cancelar(servPt) {
             servPt: servPt
         }),
         success: function (data, status) {
-            window.location = "Servicos_Cliente.html"
+            window.location = "P_Trainer.html"
         }
     })
 }
@@ -93,7 +107,7 @@ function Subscrever(servPt) {
             servPt: servPt
         }),
         success: function (data, status) {
-            window.location = "Servicos_Cliente.html"
+            window.location = "P_Trainer.html"
         }
     })
 }

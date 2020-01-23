@@ -22,12 +22,15 @@ window.onload=function(){
                     console.log(JSON.stringify(res));
                     return;
                 }
-                imagem.src = res.utiliz_imagem
-                nome.innerHTML = "<p>Nome: " + res.utiliz_nome + "</p>"
-                email.innerHTML = "<p>Email: " + res.utiliz_email + "</p>"
-                datansc.innerHTML = "<p>Data de nascimento: " + res.utiliz_dtnsc + "</p>"
-                sexo.innerHTML = "<p>Sexo: " + res.utiliz_sexo + "</p>"
-                morada.innerHTML = "<p>Morada: " + res.pts_localTreino + "</p>"
+
+                for(i in res){
+                    imagem.src = res[i].utiliz_imagem;
+                    nome.innerHTML = "<p>Nome: " + res[i].utiliz_nome + "</p>";
+                    email.innerHTML = "<p>Email: " + res[i].utiliz_email + "</p>";
+                    datansc.innerHTML = "<p>Data de nascimento: " + res[i].utiliz_dtnsc + "</p>";
+                    sexo.innerHTML = "<p>Sexo: " + res[i].utiliz_sexo + "</p>";
+                    morada.innerHTML = "<p>Morada: " + res[i].pts_localTreino + "</p>";
+                }
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);

@@ -73,7 +73,7 @@ module.exports.cancelaSubscricao = function (subs_cli_id, subs_servpts_id, callb
         if (err) {
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
         }
-        conn.query("update subscricoes set subs_estado_id=3 where subs_cli_id=? and subs_servpts_id=?",
+        conn.query("update subscricoes set subs_dataHora_fim=CURRENT_TIMESTAMP, subs_estado_id=3 where subs_cli_id=? and subs_servpts_id=?",
             [subs_cli_id, subs_servpts_id], function (err, results) {
                 conn.release();
                 if (err) {
@@ -102,5 +102,3 @@ module.exports.getSubscricaoCancelada = function (id, callback, next) {
             })
     })
 }
-
-

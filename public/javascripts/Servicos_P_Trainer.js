@@ -5,42 +5,12 @@ window.onload = function () {
     var servicosPt = document.getElementById("servicosPt");
     var servicosLista = document.getElementById("servicos");
     loadServPt()
-    loadListaServicos()
+    //loadListaServicos()
     
 
     function loadServPt() {
         $.ajax({
-            url: "api/pts/" + ptId,
-            method: "get",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (res, status, jqXHR) {
-                console.log(status);
-                if (res.err) {
-                    console.log(JSON.stringify(res));
-                    return;
-                }
-
-                var html = "";
-                for (i in res.servicos) {
-                    var s = res.servicos[i];
-                    html += "<li value="+s.servpts_serv_id+" id='servId'>" + s.serv_nome + "</li>"
-                }
-
-                servicosPt.innerHTML = html;
-
-            },
-            error: function (jqXHR, errStr, errThrown) {
-                console.log(errStr);
-            }
-
-        })
-    }
-/////////////////////// em progresso
-    function loadListaServicos() {
-        var servId = document.getElementById("servId").value;
-        $.ajax({
-            url: "api/servicos/"+servId+"/pts/"+ptId,
+            url: "api/pts/" + ptId +"/servicos",
             method: "get",
             contentType: "application/json",
             dataType: "json",
@@ -53,14 +23,30 @@ window.onload = function () {
 
                 var html = "";
                 for (i in res) {
-                    //if (res[i].serv_nome !== servicosPt)
-                        html += "<input type='checkbox' name='' value=" + res[i].serv_id + " id='servicos'>" + res[i].serv_nome;
+                    html+= "<li value="+res[i].serv_id+" >" + res[i].serv_nome + "--------------------"+"<button onclick='cancelarServ("+res[i].servpts_id+")'>Cancelar</button> </li>";
                 }
-
-                console.log(servicosPt)
-
-                servicosLista.innerHTML = html;
-
+                servicosPt.innerHTML = html;
+            },
+            error: function (jqXHR, errStr, errThrown) {
+                console.log(errStr);
+            }
+        }),
+        $.ajax({
+            url: "api/pts/" + ptId +"/servicosporadicionar",
+            method: "get",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res, status, jqXHR) {
+                console.log(status);
+                if (res.err) {
+                    console.log(JSON.stringify(res));
+                    return;
+                }
+                var html="";
+                for(i in res){
+                    html+="<input type='button' name='servico' value='adicionar' onclick='addServ("+res[i].serv_id+")' >" + res[i].serv_nome;
+                }
+                servicosLista.innerHTML=html;
             },
             error: function (jqXHR, errStr, errThrown) {
                 console.log(errStr);
@@ -69,17 +55,31 @@ window.onload = function () {
     }
 }
 
-/////dúvida por tirar
-function novosServicos(){
-    var servicos=document.getElementById("servicos");
+function addServ(servId){
 
     $.ajax({
-        url:"api/pts/"+ptId,
+        url:"api/pts/"+ptId+"/servicos",
         method:"post",
         contentType:"application/json",
         data:JSON.stringify({
             ptId:ptId,
-            servicos:servicos.value,
+            servico:servId,
+        }),
+        success: function (data, status) {
+            window.location = "Servicos_P_Trainer.html"
+        }
+
+    })
+}
+
+function cancelarServ(servPtId){
+
+    $.ajax({
+        url:"api/pts/"+ptId+"/servicos",
+        method:"delete",
+        contentType:"application/json",
+        data:JSON.stringify({
+            servicoPt:servPtId,
         }),
         success: function (data, status) {
             window.location = "Servicos_P_Trainer.html"

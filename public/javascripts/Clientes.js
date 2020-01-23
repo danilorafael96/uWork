@@ -13,15 +13,15 @@ window.onload = function () {
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiZHJhZmFlbCIsImEiOiJjazJxMnBlb3IwNzg3M25tb21ncjZzNmRrIn0.5qpXqrTCKD6ouYStFOHygA'
     }).addTo(mymap);
-    var marker = L.marker(loc).addTo(mymap);
 
-    var listaClientes= document.getElementById("listaClientes");
+    var listaClientes = document.getElementById("listaClientes");
 
     loadListaClientes();
+    markerCliente();
 
-    function loadListaClientes(){
+    function loadListaClientes() {
         $.ajax({
-            url:"api/pts/"+ptId+"/subscricoes",
+            url: "api/pts/" + ptId + "/subscricoes",
             method: "get",
             contentType: "application/json",
             dataType: "json",
@@ -34,7 +34,7 @@ window.onload = function () {
 
                 var html = "";
                 for (i in res) {
-                    html += "<li><img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'>"+res[i].utiliz_nome+" </li>";
+                    html += "<li><img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'>" + res[i].utiliz_nome + " </li>";
                 }
                 listaClientes.innerHTML = html;
             },
@@ -43,4 +43,30 @@ window.onload = function () {
             }
         })
     }
+
+    function markerCliente() {
+        $.ajax({
+            url: '/api/pts/' + ptId + '/subscricoes',
+            method: 'get',
+            contentType: "application/json", //sending in json
+            dataType: "json", // receiving in json
+            success: function (res, status) {
+                var marker;
+                for (i in res) {
+
+                    marker = L.marker(
+                        L.latLng(
+                            parseFloat(res[i].cli_lat),
+                            parseFloat(res[i].cli_long)
+
+                        )
+                    );
+                    marker.addTo(mymap).bindPopup(res[i].cli_morada).openPopup();
+
+
+                }
+            }
+        })
+    }
 }
+

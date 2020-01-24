@@ -34,7 +34,7 @@ window.onload = function () {
 
                 var html = "";
                 for (i in res) {
-                    html += "<li><img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'>" + res[i].utiliz_nome + " </li>";
+                    html += "<img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'><p>Nome:" + res[i].utiliz_nome + "</p><p>Morada:"+res[i].cli_morada +"</p><p>Serviço:"+res[i].serv_nome +"</p><p>Estado:"+res[i].estado_nome+"</p><br>";
                 }
                 listaClientes.innerHTML = html;
             },

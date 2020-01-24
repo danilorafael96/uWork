@@ -50,23 +50,24 @@ nav li a {
 
 main{
 	grid-area: main;
-	background-color:rgb(128, 128, 128,0.4);
-	height:445px;
+	background-color:rgb(128, 128, 128,0.7);
+}
+
+main section .info{
+    flex:1;
+    background-color:rgba(212, 203, 203, 0.6);
+	margin:10px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
 }
 
 main section p{
 	float: left;
 }
 
-.flex-container{
-	list-style-type:none;
-	display:flex;
-	flex-direction:column;
-	flex-wrap:wrap;
-}
-
-main section ul li img{
-	float: left;
+main section img{
+float: left;
 }
 
 footer{
@@ -78,17 +79,14 @@ footer > table{
 	margin-left:550px;
 }
 
-.areas{
-    display:flex;
-    text-align: center;
-    justify-content: space-evenly;
+footer table a{
+	text-decoration: none;
+	color:black;
 }
 
-.info{
-    flex:1;
-    height:400px;
-    background-color:rgba(212, 203, 203, 0.6);
-    margin:10px;
+.areas{
+    display:flex;
+    justify-content: space-evenly;
 }
 
 #mapa{

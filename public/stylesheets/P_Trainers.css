@@ -74,7 +74,8 @@ main ul {
 }
 
 main li{
-	margin:20px 120px 10px;
+	/*margin:20px 120px 10px;*/
+	margin-left: 50px;
 	flex-direction:column;
 }
 
@@ -89,5 +90,10 @@ footer{
 
 footer > table{
 	margin-left:550px;
+}
+
+footer table a{
+	text-decoration: none;
+	color:black;
 }
 

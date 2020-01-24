@@ -12,16 +12,6 @@ router.get('/',function(req,res,next){
     },next)
 })
 
-router.get('/servicos/:servId',function(req,res,next){
-    PersonalTrainerDao.getFiltroPts(req.params.servId,function(err,result){
-        if(err){
-            res.status(result.code).json(err);
-            return;
-        }
-        res.status(result.code).send(result.data);
-    },next)
-})
-
 router.get('/:id',function(req,res,next){
     PersonalTrainerDao.getPt(req.params.id,function(err,result){
         if(err){
@@ -42,8 +32,8 @@ router.get('/:id/servicos',function(req,res,next){
     },next)
 })
 
-router.get('/:id/servicosporadicionar',function(req,res,next){
-    PersonalTrainerDao.getPtServicosDiffs(req.params.id,function(err,result){
+router.get('/:id/servicos_por_adicionar',function(req,res,next){
+    PersonalTrainerDao.getPtServicosContrarios(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;
@@ -52,10 +42,9 @@ router.get('/:id/servicosporadicionar',function(req,res,next){
     },next)
 })
 
-//////dúvida por tirar
 router.post('/:id/servicos',function(req,res,next){
     console.log(req.body)
-    PersonalTrainerDao.addServico(req.body.ptId,req.body.servico,function(err,result){
+    PersonalTrainerDao.addServico(req.body.ptId,req.body.servico,req.body.preco,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;

@@ -43,7 +43,7 @@ window.onload = function () {
 
 				var html = "";
 				for (i in res) {
-					html += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>" + res[i].utiliz_nome + "</li>"
+					html += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'><p>" + res[i].utiliz_nome + "</p></li>"
 				}
 
 				pts.innerHTML = html;
@@ -58,7 +58,7 @@ window.onload = function () {
 function filtroPts(servId) {
 	var pts = document.getElementById("pts");
 	$.ajax({
-		url: "/api/pts/servicos/"+servId,
+		url: "/api/servicos/"+servId+"/pts",
 		method: "get",
 		contentType: "application/json",
 		dataType: "json",
@@ -72,13 +72,13 @@ function filtroPts(servId) {
 			var html1 = "";
 			for (i in res) {
 				if(servId==1){
-					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>" + res[i].utiliz_nome + "</li>"
+					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'><p>" + res[i].utiliz_nome + "</p></li>"
 				}else if(servId==2){
-					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>" + res[i].utiliz_nome + "</li>"
+					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'><p>" + res[i].utiliz_nome + "</p></li>"
 				}else if(servId==3){
-					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>" + res[i].utiliz_nome + "</li>"
+					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'><p>" + res[i].utiliz_nome + "</p></li>"
 				}else if(servId==4){
-					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'>" + res[i].utiliz_nome + "</li>"
+					html1 += "<li onclick='openPt(" + res[i].pts_id + ")'><img src=" + res[i].utiliz_imagem + " alt='personalTrainer'><p>" + res[i].utiliz_nome + "</p></li>"
 				}
 			}
 

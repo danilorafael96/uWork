@@ -51,18 +51,19 @@ nav li a {
 main{
 	grid-area: main;
 	background-color:rgb(128, 128, 128,0.4);
+	display: flex;
+}
+main section {
+	display: inline;
+	flex-wrap: wrap;
+	flex-direction: column;
 }
 
-main table tr{
-	background-color: rgba(165, 89, 53,0.8);
+main section img{
+	margin-bottom: 10px;
 }
 
-main table tr th{
-	border-top-style: solid;
-	padding-top: 10px;
-}
-
-main table tr th img:hover{
+main section img:hover{
 	cursor: -webkit-grab; cursor: grab;
 }
 
@@ -75,8 +76,12 @@ footer > table{
 	margin-left:550px;
 }
 
-.estilo{
-	border-top: 4px solid black;
-	width:500px;
-	top:30%;
+footer table a{
+	text-decoration: none;
+	color:black;
+}
+
+#subscricoes{
+	background-color:rgba(165, 89, 53,0.8);
+	display: flex;
 }

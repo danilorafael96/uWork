@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id',function(req,res,next){
-    ClienteDAO.getClienteId(req.params.id,function(err,result){
+    ClienteDAO.getCliente(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;
@@ -46,7 +46,7 @@ router.put('/:id/subscricoes/cancelar',function(req,res,next){
 
 router.get('/:id/subscricoes',function(req,res,next){
     console.log(req.body)
-    ClienteDAO.getSubscricao(req.params.id,function(err,result){
+    ClienteDAO.getSubscricoes(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;
@@ -57,7 +57,7 @@ router.get('/:id/subscricoes',function(req,res,next){
 
 router.get('/:id/subscricoes/cancelar',function(req,res,next){
     console.log(req.body)
-    ClienteDAO.getSubscricaoCancelada(req.params.id,function(err,result){
+    ClienteDAO.getSubscricoesCanceladas(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;

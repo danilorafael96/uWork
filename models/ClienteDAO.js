@@ -16,7 +16,7 @@ module.exports.getClientes = function (callback, next) {
     })
 }
 
-module.exports.getClienteId = function (id, callback, next) {
+module.exports.getCliente = function (id, callback, next) {
     pool.getConnection(function (err, conn) {
         if (err) {
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
@@ -51,12 +51,12 @@ module.exports.addSubscricao = function (subs_cli_id, subs_servpts_id, callback,
     })
 }
 
-module.exports.getSubscricao = function (id, callback, next) {
+module.exports.getSubscricoes = function (id, callback, next) {
     pool.getConnection(function (err, conn) {
         if (err) {
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
         }
-        conn.query("select pts_id,subs_id,subs_servpts_id,utiliz_imagem,utiliz_nome,pts_localTreino,utiliz_dtnsc, serv_nome,estado_nome from utilizadores,personalTrainers,subscricoes,servicos_personalTrainers,servicos,clientes,estadoSubscricao where pts_utiliz_id=utiliz_id and subs_servpts_id=servpts_id and servpts_pts_id=pts_id and servpts_serv_id=serv_id and subs_cli_id=cli_id and subs_estado_id=estado_id and subs_cli_id=?",
+        conn.query("select pts_id,estado_id,subs_dataHora_inicio,subs_dataHora_fim,subs_id,subs_servpts_id,utiliz_imagem,utiliz_nome,pts_localTreino,utiliz_dtnsc, serv_nome,estado_nome from utilizadores,personalTrainers,subscricoes,servicos_personalTrainers,servicos,clientes,estadoSubscricao where pts_utiliz_id=utiliz_id and subs_servpts_id=servpts_id and servpts_pts_id=pts_id and servpts_serv_id=serv_id and subs_cli_id=cli_id and subs_estado_id=estado_id and subs_cli_id=?",
             [id], function (err, results) {
                 conn.release();
                 if (err) {
@@ -86,7 +86,7 @@ module.exports.cancelaSubscricao = function (subs_cli_id, subs_servpts_id, callb
     })
 }
 
-module.exports.getSubscricaoCancelada = function (id, callback, next) {
+module.exports.getSubscricoesCanceladas = function (id, callback, next) {
     pool.getConnection(function (err, conn) {
         if (err) {
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })

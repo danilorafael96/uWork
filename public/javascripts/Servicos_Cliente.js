@@ -1,4 +1,4 @@
-var cliId=sessionStorage.getItem("cliId");
+var cliId = sessionStorage.getItem("cliId");
 
 window.onload = function () {
     var subscricoes = document.getElementById("subscricoes");
@@ -7,7 +7,7 @@ window.onload = function () {
 
     function loadSubs() {
         $.ajax({
-            url: "/api/clientes/"+cliId+"/subscricoes",
+            url: "/api/clientes/" + cliId + "/subscricoes",
             method: "get",
             contentType: "aplication/json",
             dataType: "json",
@@ -18,9 +18,12 @@ window.onload = function () {
                     return;
                 }
                 var html = "";
+                var html1="";
                 for (i in res) {
-                    //html += "<li onclick='openPt(" + res[i].pts_id + ")'>"+res[i].estado_nome+"</li>"
-                    html+="<tr> <th onclick='openPt(" + res[i].pts_id + ")'> <img src='"+res[i].utiliz_imagem+"' alt='imagem'></th></tr> <tr><td>Personal trainer: "+res[i].utiliz_nome+"</td></tr> <tr><td>Serviço : "+res[i].serv_nome+"</td></tr> <tr><td>Localização: "+res[i].pts_localTreino+"</td></tr> <tr><td>Estado da subscrição: "+res[i].estado_nome+"</td></tr>"
+                    if(res[i].estado_id==3)
+                    html += "<img src='" + res[i].utiliz_imagem + "' alt='' onclick='openPt(" + res[i].pts_id + ")'><p>Personal trainer: " + res[i].utiliz_nome + "</p><p>Serviço: " + res[i].serv_nome + "</p><p>Localização: " + res[i].pts_localTreino + "</p><p>Estado da subscrição: " + res[i].estado_nome + "</p><p>Data de início: " + res[i].subs_dataHora_inicio + "</p><p>Data de fim: " + res[i].subs_dataHora_fim + "</p>"
+                    if(res[i].estado_id==2)
+                    html += "<img src='" + res[i].utiliz_imagem + "' alt='' onclick='openPt(" + res[i].pts_id + ")'><p>Personal trainer: " + res[i].utiliz_nome + "</p><p>Serviço: " + res[i].serv_nome + "</p><p>Localização: " + res[i].pts_localTreino + "</p><p>Estado da subscrição: " + res[i].estado_nome + "</p><p>Data de início: " + res[i].subs_dataHora_inicio + "</p>"
                 }
                 subscricoes.innerHTML = html;
             },
@@ -32,6 +35,6 @@ window.onload = function () {
 }
 
 function openPt(pts_id) {
-	sessionStorage.setItem("ptId", pts_id);
-	window.location.href = "P_Trainer.html";
+    sessionStorage.setItem("ptId", pts_id);
+    window.location.href = "P_Trainer.html";
 }

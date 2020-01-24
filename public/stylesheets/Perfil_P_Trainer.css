@@ -61,3 +61,8 @@ footer{
 footer > table{
 	margin-left:550px;
 }
+
+footer table a{
+	text-decoration: none;
+	color:black;
+}

@@ -38,7 +38,7 @@ nav > ul > li{
 	float:left;
 }
 
-a {
+nav ul li a {
   display: block;
   color: white;
   text-align: center;
@@ -65,4 +65,9 @@ footer{
 
 table{
 	margin-left:550px;
+}
+
+footer table a{
+	text-decoration: none;
+	color:black;
 }

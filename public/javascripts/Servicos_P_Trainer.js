@@ -23,7 +23,7 @@ window.onload = function () {
 
                 var html = "";
                 for (i in res) {
-                    html+= "<li value="+res[i].serv_id+" >" + res[i].serv_nome + "--------------------"+"<button onclick='cancelarServ("+res[i].servpts_id+")'>Cancelar</button> </li>";
+                    html+= "<li value="+res[i].serv_id+" >" + res[i].serv_nome + "-"+res[i].serv_preco+"€<button onclick='removerServ("+res[i].servpts_id+")'>Remover</button> </li>";
                 }
                 servicosPt.innerHTML = html;
             },
@@ -32,7 +32,7 @@ window.onload = function () {
             }
         }),
         $.ajax({
-            url: "api/pts/" + ptId +"/servicosporadicionar",
+            url: "api/pts/" + ptId +"/servicos_por_adicionar",
             method: "get",
             contentType: "application/json",
             dataType: "json",
@@ -44,7 +44,7 @@ window.onload = function () {
                 }
                 var html="";
                 for(i in res){
-                    html+="<input type='button' name='servico' value='adicionar' onclick='addServ("+res[i].serv_id+")' >" + res[i].serv_nome;
+                    html+="<input type='button' name='servico' value='adicionar' onclick='addServ("+res[i].serv_id+","+res[i].serv_preco+")' >" + res[i].serv_nome+"-"+res[i].serv_preco+"€<br><br>";
                 }
                 servicosLista.innerHTML=html;
             },
@@ -55,8 +55,7 @@ window.onload = function () {
     }
 }
 
-function addServ(servId){
-
+function addServ(servId,preco){
     $.ajax({
         url:"api/pts/"+ptId+"/servicos",
         method:"post",
@@ -64,6 +63,7 @@ function addServ(servId){
         data:JSON.stringify({
             ptId:ptId,
             servico:servId,
+            preco:preco,
         }),
         success: function (data, status) {
             window.location = "Servicos_P_Trainer.html"
@@ -72,7 +72,7 @@ function addServ(servId){
     })
 }
 
-function cancelarServ(servPtId){
+function removerServ(servPtId){
 
     $.ajax({
         url:"api/pts/"+ptId+"/servicos",

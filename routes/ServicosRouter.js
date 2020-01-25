@@ -12,7 +12,7 @@ router.get('/',function(req,res,next){
     },next)
 })
 
-router.get('/servicos/:servId/pts',function(req,res,next){
+router.get('/:servId/pts',function(req,res,next){
     ServicosDao.getFiltroPts(req.params.servId,function(err,result){
         if(err){
             res.status(result.code).json(err);

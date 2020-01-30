@@ -1,3 +1,4 @@
+
 function addr_search() {
     var inp = document.getElementById("local");
     var options = document.getElementById("localList");
@@ -25,6 +26,7 @@ function addr_search() {
 
 var loc;
 
+//Função que insere os valores de registro introduzidos por um novo cliente.
 function registrar() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;

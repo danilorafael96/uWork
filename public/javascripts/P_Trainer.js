@@ -120,7 +120,7 @@ function getLocalizacao() {
     navigator.geolocation.getCurrentPosition(rota);
 }
 
-//
+//Função 
 function rota(position) {
 
     $.ajax({

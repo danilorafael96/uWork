@@ -2,6 +2,7 @@ var loc = [38.7071382, -9.15238686328902];
 console.log("Start");
 
 var ptId = sessionStorage.getItem("ptId")
+var listaClientes;
 
 window.onload = function () {
 
@@ -14,42 +15,18 @@ window.onload = function () {
         accessToken: 'pk.eyJ1IjoiZHJhZmFlbCIsImEiOiJjazJxMnBlb3IwNzg3M25tb21ncjZzNmRrIn0.5qpXqrTCKD6ouYStFOHygA'
     }).addTo(mymap);
 
-    var listaClientes = document.getElementById("listaClientes");
+    listaClientes = document.getElementById("listaClientes");
 
-    loadListaClientes();
-    markerCliente();
+    carregaClientes();
+    marcadorCliente();
 
-    function loadListaClientes() {
-        $.ajax({
-            url: "api/pts/" + ptId + "/subscricoes",
-            method: "get",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (res, status, jqXHR) {
-                console.log(status);
-                if (res.err) {
-                    console.log(JSON.stringify(res));
-                    return;
-                }
-
-                var html = "";
-                for (i in res) {
-                    html += "<img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'><p>Nome:" + res[i].utiliz_nome + "</p><p>Morada:"+res[i].cli_morada +"</p><p>Serviço:"+res[i].serv_nome +"</p><p>Estado:"+res[i].estado_nome+"</p><br>";
-                }
-                listaClientes.innerHTML = html;
-            },
-            error: function (jqXHR, errStr, errThrown) {
-                console.log(errStr);
-            }
-        })
-    }
-
-    function markerCliente() {
+    //Função que adiciona o marcador de cada cliente subscrito ao mapa.
+    function marcadorCliente() {
         $.ajax({
             url: '/api/pts/' + ptId + '/subscricoes',
             method: 'get',
-            contentType: "application/json", //sending in json
-            dataType: "json", // receiving in json
+            contentType: "application/json",
+            dataType: "json",
             success: function (res, status) {
                 var marker;
                 for (i in res) {
@@ -68,5 +45,31 @@ window.onload = function () {
             }
         })
     }
+}
+
+//Função que permite carregar a lista de clientes subscritos à um personal trainers.
+function carregaClientes() {
+    $.ajax({
+        url: "api/pts/" + ptId + "/subscricoes",
+        method: "get",
+        contentType: "application/json",
+        dataType: "json",
+        success: function (res, status, jqXHR) {
+            console.log(status);
+            if (res.err) {
+                console.log(JSON.stringify(res));
+                return;
+            }
+
+            var html = "";
+            for (i in res) {
+                html += "<img src=" + res[i].utiliz_imagem + " alt='' style='width:120px'><p>Nome:" + res[i].utiliz_nome + "</p><p>Morada:" + res[i].cli_morada + "</p><p>Serviço:" + res[i].serv_nome + "</p><p>Estado:" + res[i].estado_nome + "</p><br>";
+            }
+            listaClientes.innerHTML = html;
+        },
+        error: function (jqXHR, errStr, errThrown) {
+            console.log(errStr);
+        }
+    })
 }
 

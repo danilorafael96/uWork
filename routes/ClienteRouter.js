@@ -46,7 +46,7 @@ router.put('/:id/subscricoes/cancelar',function(req,res,next){
 
 router.get('/:id/subscricoes',function(req,res,next){
     console.log(req.body)
-    ClienteDAO.getSubscricoes(req.params.id,function(err,result){
+    ClienteDAO.getClienteSubscricoes(req.params.id,function(err,result){
         if(err){
             res.status(result.code).json(err);
             return;

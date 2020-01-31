@@ -1,4 +1,5 @@
 
+//Faz o pedido ao OpenStreetMap e retorna uma lista de localizações de acordo com o que foi introduzido pelo utilizador.
 function addr_search() {
     var inp = document.getElementById("local");
     var options = document.getElementById("localList");

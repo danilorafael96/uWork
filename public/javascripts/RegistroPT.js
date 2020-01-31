@@ -1,5 +1,5 @@
 
-//
+//Faz o pedido ao OpenStreetMap e retorna uma lista de localizações de acordo com o que foi introduzido pelo utilizador.
 function addr_search() {
     var inp = document.getElementById("local");
     var options = document.getElementById("localList");
@@ -28,7 +28,9 @@ function addr_search() {
 var loc;
 
 
-//
+/*Função que insere os valores de registro introduzidos por um novo cliente e através do OpenStreetMap retorna
+a latitude e longitude do local de treino introduzido.
+*/
 function registrar() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;

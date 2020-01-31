@@ -51,32 +51,18 @@ function ptInfo() {
                     html += "<input type='button' name='servico' value='subscrever' onclick='subscrever(" + res[i].servpts_id + ")'>" + res[i].serv_nome + " - " + res[i].serv_preco + "€";
                 }
             }
+
+            for (i in res) {
+                imagem.src = res[i].utiliz_imagem;
+                nome.innerHTML = res[i].utiliz_nome;
+                descricao.innerHTML = res[i].pts_descricao;
+            }
             servicosPT.innerHTML = html;
         },
         error: function (jqXHR, errStr, errThrown) {
             console.log(errStr);
         }
-    }),
-
-        $.ajax({
-            url: "/api/pts/" + ptId,
-            method: "get",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (res, status, jqXHR) {
-                console.log(status);
-                if (res.err) {
-                    console.log(JSON.stringify(res));
-                    return;
-                }
-
-                for (i in res) {
-                    imagem.src = res[i].utiliz_imagem;
-                    nome.innerHTML = res[i].utiliz_nome;
-                    descricao.innerHTML = res[i].pts_descricao;
-                }
-            }
-        })
+    })
 }
 
 /*Um serviço é cancelado se antes foi feita uma subscrição de um cliente à um serviço associado a um 

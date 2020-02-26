@@ -22,6 +22,7 @@ module.exports.getPt = function (id, callback, next) {
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
 
         conn.query("select utiliz_nome,utiliz_email,pts_localTreino,utiliz_dtnsc, pts_descricao, utiliz_imagem,utiliz_sexo from personalTrainers, utilizadores where pts_utiliz_id=utiliz_id and pts_id=?", [id], function (err, results) {
+            conn.release();
             if (err) {
                 callback(err, { code: 500, status: "Erro na conexão da base de dados" })
                 return;
@@ -36,7 +37,8 @@ module.exports.getPtServicos = function (id, callback, next) {
         if (err)
             callback(err, { code: 500, status: "Erro na conexão da base de dados" })
 
-        conn.query("select pts_id,serv_nome,serv_preco,pts_lat,pts_long,pts_geom from personalTrainers left join servicos_personalTrainers on servpts_pts_id=pts_id  left join servicos on serv_id = servpts_serv_id where pts_id=?", [id], function (err, results) {
+        conn.query("select pts_id,serv_nome,serv_preco,pts_lat,pts_long,pts_geom,serv_id,servpts_id from personalTrainers left join servicos_personalTrainers on servpts_pts_id=pts_id  left join servicos on serv_id = servpts_serv_id where pts_id=?", [id], function (err, results) {
+            conn.release(); 
             if (err) {
                 callback(err, { code: 500, status: "Erro na conexão da base de dados" })
                 return;

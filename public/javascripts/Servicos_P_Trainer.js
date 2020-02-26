@@ -79,7 +79,10 @@ function adicionaServico(servId, preco) {
             preco: preco,
         }),
         success: function (data, status) {
-            window.location = "Servicos_P_Trainer.html"
+            //window.location = "Servicos_P_Trainer.html"
+            carregaServicosPt()
+            carregaServicosPorAdd()
+                
         }
 
     })
@@ -98,7 +101,10 @@ function removeServico(servPtId) {
             servicoPt: servPtId,
         }),
         success: function (data, status) {
-            window.location = "Servicos_P_Trainer.html"
+            //window.location = "Servicos_P_Trainer.html"
+            carregaServicosPt()
+            carregaServicosPorAdd()
+            
         }
 
     })
